@@ -447,7 +447,7 @@ export default function HomePage() {
               </div>
               {/* </CHANGE> */}
               <p className="text-muted-foreground text-sm mb-4">Resultados preparam novos ciclos</p>
-              <p className="text-muted-foreground text-sm">www.golivecap.com.br</p>
+              <p className="text-muted-foreground text-sm">www.golive.capital</p>
             </div>
             <div>
               <h3 className="font-semibold mb-4">Endereço</h3>
@@ -488,7 +488,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="border-t border-border mt-8 pt-8 text-center">
-            <p className="text-muted-foreground text-sm">© 2024 Go Live Capital. Todos os direitos reservados.</p>
+            <p className="text-muted-foreground text-sm">© 2025 Go Live Capital. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>
