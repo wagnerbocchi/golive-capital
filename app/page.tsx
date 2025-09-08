@@ -438,7 +438,7 @@ export default function HomePage() {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <Image
-                  src="/images/golive-logo.png"
+                  src="/public/images/golive-logo.png"
                   alt="GoLive Capital"
                   width={100}
                   height={32}
