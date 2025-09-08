@@ -14,7 +14,7 @@ export default function HomePage() {
           <nav className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <Image
-                src="/images/golive-logo.png"
+                src="/public/images/golive-logo.png"
                 alt="GoLive Capital"
                 width={120}
                 height={40}
