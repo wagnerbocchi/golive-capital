@@ -1,6 +1,13 @@
+"use client"
+
+import type React from "react"
+
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
 import {
   ArrowRight,
   Target,
@@ -13,11 +20,61 @@ import {
   Briefcase,
   Award,
   Linkedin,
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Building2,
+  Send,
+  CheckCircle,
 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
 export default function HomePage() {
+  const [formData, setFormData] = useState({
+    nome: "",
+    empresa: "",
+    email: "",
+    telefone: "",
+    assunto: "",
+    mensagem: "",
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    // Simulate form submission
+    await new Promise((resolve) => setTimeout(resolve, 2000))
+
+    setIsSubmitting(false)
+    setIsSubmitted(true)
+
+    // Reset form after 3 seconds
+    setTimeout(() => {
+      setIsSubmitted(false)
+      setFormData({
+        nome: "",
+        empresa: "",
+        email: "",
+        telefone: "",
+        assunto: "",
+        mensagem: "",
+      })
+    }, 3000)
+  }
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target
+    setFormData((prev) => ({
+      ...prev,
+      [id]: value,
+    }))
+  }
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -42,16 +99,16 @@ export default function HomePage() {
               </a>
               <a href="#teses" className="text-muted-foreground hover:text-foreground transition-colors">
                 Teses
-              </a>
-              <a href="#valores" className="text-muted-foreground hover:text-foreground transition-colors">
-                Valores
-              </a>
+              </a>              
               <a href="#glossario" className="text-muted-foreground hover:text-foreground transition-colors">
                 Glossário
               </a>
-              <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-                <Link href="/contato">Contato</Link>
-              </Button>
+              <a
+                href="#contato"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md transition-colors"
+              >
+                Contato
+              </a>
             </div>
           </nav>
         </div>
@@ -59,8 +116,7 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="py-20 px-4">
-        <div className="container mx-auto text-center">
-          <Badge className="mb-6 badge-high-contrast">Sênior Search Fund</Badge>
+        <div className="container mx-auto text-center">          
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">
             Resultados preparam <span className="text-primary">novos ciclos</span>
           </h1>
@@ -70,19 +126,11 @@ export default function HomePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-              <Link href="/contato">
+              <Link href="#contato">
                 Conheça nossa estratégia
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-border text-foreground hover:bg-card bg-transparent"
-              asChild
-            >
-              <Link href="/glossario">Ver glossário</Link>
-            </Button>
+            </Button>            
           </div>
         </div>
       </section>
@@ -117,6 +165,127 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+{/* Investment Thesis */}
+      <section id="teses" className="py-16 px-4">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Teses de Investimento</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Nosso foco são empresas de software como serviço (SaaS) B2B e Fintechs de infraestrutura
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <Card className="bg-card border-border">
+              <CardHeader>
+                <CardTitle className="text-lg flex items-center">
+                  <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mr-3">
+                    <span className="text-primary font-bold">1</span>
+                  </div>
+                  SaaS Clássico
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Empresas com perfil de sucessão, crescimento e margem alinhadas com rule of 40. Geralmente empresas de
+                  nicho, verticais (VSaaS).
+                </p>
+                <Badge variant="outline" className="border-primary/20 text-primary">
+                  Rule of 40
+                </Badge>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-card border-border">
+              <CardHeader>
+                <CardTitle className="text-lg flex items-center">
+                  <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mr-3">
+                    <span className="text-primary font-bold">2</span>
+                  </div>
+                  Growth
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Empresas crescendo acima dos concorrentes e/ou em mercados com crescimento exponencial. Podem ter
+                  prêmio em relação às empresas clássicas.
+                </p>
+                <Badge variant="outline" className="border-primary/20 text-primary">
+                  Alto Crescimento
+                </Badge>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-card border-border">
+              <CardHeader>
+                <CardTitle className="text-lg flex items-center">
+                  <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mr-3">
+                    <span className="text-primary font-bold">3</span>
+                  </div>
+                  Change Management
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Empresas com valor a ser destravado, que não estão crescendo como a maioria do segmento. Faturamento
+                  elevado com desconto no valuation.
+                </p>
+                <Badge variant="outline" className="border-primary/20 text-primary">
+                  Valor Destravado
+                </Badge>
+              </CardContent>
+            </Card>
+          </div>
+
+          <Card className="bg-card border-border">
+            <CardHeader>
+              <CardTitle>Critérios de Elegibilidade</CardTitle>
+              <CardDescription>Requisitos fundamentais para empresas do nosso portfólio</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-primary rounded-full"></div>
+                    <span className="text-sm">Maioria de receitas em software versus serviços</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-primary rounded-full"></div>
+                    <span className="text-sm">Receitas recorrentes e com previsibilidade</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-primary rounded-full"></div>
+                    <span className="text-sm">Serviços ou softwares de missão crítica</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-primary rounded-full"></div>
+                    <span className="text-sm">Alto lock-in dos clientes</span>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-primary rounded-full"></div>
+                    <span className="text-sm">Sem endividamento ou baixa alavancagem</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-primary rounded-full"></div>
+                    <span className="text-sm">Mercados atrativos e com crescimento</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-primary rounded-full"></div>
+                    <span className="text-sm">Produtos/serviços com alta especialização</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-primary rounded-full"></div>
+                    <span className="text-sm">Alta barreira de entrada</span>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
@@ -346,236 +515,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Investment Thesis */}
-      <section id="teses" className="py-16 px-4">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Teses de Investimento</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Nosso foco são empresas de software como serviço (SaaS) B2B e Fintechs de infraestrutura
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <Card className="bg-card border-border">
-              <CardHeader>
-                <CardTitle className="text-lg flex items-center">
-                  <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mr-3">
-                    <span className="text-primary font-bold">1</span>
-                  </div>
-                  SaaS Clássico
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Empresas com perfil de sucessão, crescimento e margem alinhadas com rule of 40. Geralmente empresas de
-                  nicho, verticais (VSaaS).
-                </p>
-                <Badge variant="outline" className="border-primary/20 text-primary">
-                  Rule of 40
-                </Badge>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-card border-border">
-              <CardHeader>
-                <CardTitle className="text-lg flex items-center">
-                  <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mr-3">
-                    <span className="text-primary font-bold">2</span>
-                  </div>
-                  Growth
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Empresas crescendo acima dos concorrentes e/ou em mercados com crescimento exponencial. Podem ter
-                  prêmio em relação às empresas clássicas.
-                </p>
-                <Badge variant="outline" className="border-primary/20 text-primary">
-                  Alto Crescimento
-                </Badge>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-card border-border">
-              <CardHeader>
-                <CardTitle className="text-lg flex items-center">
-                  <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mr-3">
-                    <span className="text-primary font-bold">3</span>
-                  </div>
-                  Change Management
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Empresas com valor a ser destravado, que não estão crescendo como a maioria do segmento. Faturamento
-                  elevado com desconto no valuation.
-                </p>
-                <Badge variant="outline" className="border-primary/20 text-primary">
-                  Valor Destravado
-                </Badge>
-              </CardContent>
-            </Card>
-          </div>
-
-          <Card className="bg-card border-border">
-            <CardHeader>
-              <CardTitle>Critérios de Elegibilidade</CardTitle>
-              <CardDescription>Requisitos fundamentais para empresas do nosso portfólio</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="space-y-3">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-sm">Maioria de receitas em software versus serviços</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-sm">Receitas recorrentes e com previsibilidade</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-sm">Serviços ou softwares de missão crítica</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-sm">Alto lock-in dos clientes</span>
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-sm">Sem endividamento ou baixa alavancagem</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-sm">Mercados atrativos e com crescimento</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-sm">Produtos/serviços com alta especialização</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-sm">Alta barreira de entrada</span>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Mission & Values */}
-      <section id="valores" className="py-16 px-4 bg-card">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Missão, Visão e Valores</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Os princípios que guiam nossa atuação e definem nossa identidade
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <Card className="bg-background border-border text-center">
-              <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Target className="h-6 w-6 text-primary" />
-                </div>
-                <CardTitle>Missão</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">Transformar experiência e talento em legado.</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-background border-border text-center">
-              <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Eye className="h-6 w-6 text-primary" />
-                </div>
-                <CardTitle>Visão</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Reunir mentes brilhantes, atrair projetos adequados e investir para inspirar novos começos.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-background border-border text-center">
-              <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Users className="h-6 w-6 text-primary" />
-                </div>
-                <CardTitle>Valores</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Ética, Resultado, Respeito, Disponibilidade, Visão de Futuro e Inovação.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                icon: Shield,
-                title: "Ética",
-                description:
-                  "Agimos com integridade em todas as decisões, guiados por princípios que sustentam relações duradouras.",
-              },
-              {
-                icon: Target,
-                title: "Resultado",
-                description:
-                  "Valorizamos entregas consistentes, mensuráveis e alinhadas com os objetivos estratégicos.",
-              },
-              {
-                icon: Users,
-                title: "Respeito",
-                description:
-                  "Reconhecemos a singularidade de cada pessoa, projeto e contexto, promovendo relações transparentes.",
-              },
-              {
-                icon: TrendingUp,
-                title: "Disponibilidade",
-                description:
-                  "Estamos presentes e acessíveis para apoiar, ouvir e agir com agilidade sempre que necessário.",
-              },
-              {
-                icon: Eye,
-                title: "Visão de Futuro",
-                description:
-                  "Antecipamos cenários e tendências para construir estratégias que gerem valor sustentável.",
-              },
-              {
-                icon: Lightbulb,
-                title: "Inovação",
-                description:
-                  "Buscamos continuamente novas abordagens, tecnologias e modelos para transformar desafios em oportunidades.",
-              },
-            ].map((value, index) => (
-              <Card key={index} className="bg-background border-border">
-                <CardHeader>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
-                      <value.icon className="h-4 w-4 text-primary" />
-                    </div>
-                    <CardTitle className="text-lg">{value.title}</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">{value.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
+            
       {/* Glossary Preview Section */}
       <section id="glossario" className="py-16 px-4">
         <div className="container mx-auto">
@@ -625,6 +565,253 @@ export default function HomePage() {
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contato" className="py-16 px-4 bg-card">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <Badge className="mb-6 badge-high-contrast">Entre em Contato</Badge>
+            <h2 className="text-3xl font-bold mb-4">
+              Vamos conversar sobre <span className="text-primary">oportunidades</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Interessado em saber mais sobre nossos investimentos ou tem uma empresa que se encaixa no nosso perfil?
+              Entre em contato conosco.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Contact Form */}
+            <div>
+              <Card className="bg-background border-border">
+                <CardHeader>
+                  <CardTitle className="text-2xl">Envie sua mensagem</CardTitle>
+                  <CardDescription>Preencha o formulário abaixo e entraremos em contato em breve</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <label htmlFor="nome" className="text-sm font-medium">
+                          Nome *
+                        </label>
+                        <Input
+                          id="nome"
+                          placeholder="Seu nome completo"
+                          className="bg-card border-border"
+                          value={formData.nome}
+                          onChange={handleInputChange}
+                          required
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label htmlFor="empresa" className="text-sm font-medium">
+                          Empresa
+                        </label>
+                        <Input
+                          id="empresa"
+                          placeholder="Nome da empresa"
+                          className="bg-card border-border"
+                          value={formData.empresa}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <label htmlFor="email" className="text-sm font-medium">
+                          Email *
+                        </label>
+                        <Input
+                          id="email"
+                          type="email"
+                          placeholder="seu@email.com"
+                          className="bg-card border-border"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          required
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label htmlFor="telefone" className="text-sm font-medium">
+                          Telefone
+                        </label>
+                        <Input
+                          id="telefone"
+                          placeholder="(11) 99999-9999"
+                          className="bg-card border-border"
+                          value={formData.telefone}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <label htmlFor="assunto" className="text-sm font-medium">
+                        Assunto *
+                      </label>
+                      <Input
+                        id="assunto"
+                        placeholder="Sobre o que gostaria de falar?"
+                        className="bg-card border-border"
+                        value={formData.assunto}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <label htmlFor="mensagem" className="text-sm font-medium">
+                        Mensagem *
+                      </label>
+                      <Textarea
+                        id="mensagem"
+                        placeholder="Descreva sua mensagem, projeto ou oportunidade..."
+                        rows={6}
+                        className="bg-card border-border resize-none"
+                        value={formData.mensagem}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
+
+                    <Button
+                      type="submit"
+                      className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+                      disabled={isSubmitting || isSubmitted}
+                    >
+                      {isSubmitted ? (
+                        <>
+                          <CheckCircle className="mr-2 h-4 w-4" />
+                          Mensagem Enviada!
+                        </>
+                      ) : isSubmitting ? (
+                        <>
+                          <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-primary-foreground border-t-transparent" />
+                          Enviando...
+                        </>
+                      ) : (
+                        <>
+                          <Send className="mr-2 h-4 w-4" />
+                          Enviar Mensagem
+                        </>
+                      )}
+                    </Button>
+                  </form>
+
+                  <p className="text-xs text-muted-foreground">
+                    * Campos obrigatórios. Seus dados serão tratados com confidencialidade.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Contact Information */}
+            <div className="space-y-6">
+              <Card className="bg-background border-border">
+                <CardHeader>
+                  <CardTitle className="text-xl flex items-center">
+                    <Building2 className="mr-3 h-5 w-5 text-primary" />
+                    Informações de Contato
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="flex items-start space-x-3">
+                    <MapPin className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold mb-1">Endereço</h3>
+                      <p className="text-sm text-muted-foreground">
+                        Rua Tabapuã 500 - Itaim Bibi
+                        <br />
+                        São Paulo - SP, 04533-001
+                        <br />
+                        Brasil
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-3">
+                    <Mail className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold mb-1">Email</h3>
+                      <p className="text-sm text-muted-foreground">contato@golivecap.com.br</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-3">
+                    <Phone className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold mb-1">Telefone</h3>
+                      <p className="text-sm text-muted-foreground">+55 (11) 3000-0000</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-3">
+                    <Clock className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold mb-1">Horário de Atendimento</h3>
+                      <p className="text-sm text-muted-foreground">
+                        Segunda a Sexta: 9h às 18h
+                        <br />
+                        Sábado e Domingo: Fechado
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-background border-border">
+                <CardHeader>
+                  <CardTitle className="text-lg">Tem uma empresa para vender?</CardTitle>
+                  <CardDescription>
+                    Verificamos se sua empresa se encaixa no nosso perfil de investimento
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3 text-sm">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span>Receita recorrente (SaaS/Fintech)</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span>Geração de caixa positivo</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span>Potencial de crescimento</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Map Section */}
+              <Card className="bg-background border-border overflow-hidden">
+                <CardHeader>
+                  <CardTitle className="text-lg">Nossa Localização</CardTitle>
+                  <CardDescription>Estamos no coração financeiro de São Paulo</CardDescription>
+                </CardHeader>
+                <CardContent className="p-0">
+                  <div className="h-80 rounded-lg overflow-hidden">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.7234567890123!2d-46.6784567!3d-23.5678901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5a2b2ed7f3a7%3A0x8b8b8b8b8b8b8b8b!2sRua%20Tabapuã%2C%20500%20-%20Itaim%20Bibi%2C%20São%20Paulo%20-%20SP%2C%2004533-001!5e0!3m2!1spt-BR!2sbr!4v1234567890123!5m2!1spt-BR!2sbr"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title="Localização Go Live Capital - Rua Tabapuã 500, Itaim Bibi, São Paulo"
+                      className="rounded-lg"
+                    />
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
@@ -683,6 +870,12 @@ export default function HomePage() {
                   className="block text-muted-foreground text-sm hover:text-foreground transition-colors"
                 >
                   Glossário
+                </a>
+                <a
+                  href="#contato"
+                  className="block text-muted-foreground text-sm hover:text-foreground transition-colors"
+                >
+                  Contato
                 </a>
               </div>
             </div>
