@@ -13,9 +13,6 @@ import {
   Target,
   Users,
   TrendingUp,
-  Shield,
-  Eye,
-  Lightbulb,
   BookOpen,
   Briefcase,
   Award,
@@ -27,11 +24,9 @@ import {
   Building2,
   Send,
   CheckCircle,
-  Section,
 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
-import { secondsInDay } from "date-fns/constants"
 
 export default function HomePage() {
   const [formData, setFormData] = useState({
@@ -101,7 +96,7 @@ export default function HomePage() {
               </a>
               <a href="#teses" className="text-muted-foreground hover:text-foreground transition-colors">
                 Teses
-              </a>              
+              </a>
               <a href="#glossario" className="text-muted-foreground hover:text-foreground transition-colors">
                 Glossário
               </a>
@@ -118,7 +113,7 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="py-20 px-4">
-        <div className="container mx-auto text-center">          
+        <div className="container mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">
             Resultados preparam <span className="text-primary">novos ciclos</span>
           </h1>
@@ -132,7 +127,7 @@ export default function HomePage() {
                 Conheça nossa estratégia
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
-            </Button>            
+            </Button>
           </div>
         </div>
       </section>
@@ -169,10 +164,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-    </div>
-  )
-        {/* Investments Thes */}
-        <section id="teses" className="py-16 px-4">
+
+      {/* Investment Thesis */}
+      <section id="teses" className="py-16 px-4">
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Teses de Investimento</h2>
@@ -454,10 +448,11 @@ export default function HomePage() {
             </Card>
           </div>
 
+          {/* Section investidor */}
           <div className="mt-12 max-w-4xl mx-auto">
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold mb-2">Nosso Investidor</h3>
-              <p className="text-muted-foreground">Apoio estratégico da Spectra Investments</p>
+              <h3 className="text-2xl font-bold mb-2">Investidores</h3>
+              {/*<p className="text-muted-foreground">Apoio estratégico da Spectra Investments</p>*/}
             </div>
 
             <Card className="bg-card border-border">
@@ -478,38 +473,18 @@ export default function HomePage() {
                 <p className="text-sm text-muted-foreground text-center max-w-2xl mx-auto">
                   Gestora brasileira líder em ativos alternativos na América Latina, fundada em 2012
                 </p>
-
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl mx-auto">
                   <div className="text-center">
-                    <p className="text-2xl font-bold text-primary">R$ 7 bi</p>
-                    <p className="text-xs text-muted-foreground">Sob gestão</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-2xl font-bold text-primary">2012</p>
-                    <p className="text-xs text-muted-foreground">Fundada em</p>
+                    <p className="text-2xl font-bold text-primary mb-1">R$ 7 bi</p>
+                    <p className="text-sm text-muted-foreground">de Capital sob gestão</p>
                   </div>
                   <div className="text-center">
-                    <p className="text-2xl font-bold text-primary">450+</p>
-                    <p className="text-xs text-muted-foreground">Empresas investidas</p>
+                    <p className="text-2xl font-bold text-primary mb-1">+ 13 anos</p>
+                    <p className="text-sm text-muted-foreground">de história</p>
                   </div>
                   <div className="text-center">
-                    <p className="text-2xl font-bold text-primary">140+</p>
-                    <p className="text-xs text-muted-foreground">Desinvestimentos</p>
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-3 gap-4 pt-4">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-sm text-muted-foreground">Private Equity & Venture Capital</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-sm text-muted-foreground">Referência em negócios secundários</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-sm text-muted-foreground">Histórico de alto retorno</span>
+                    <p className="text-2xl font-bold text-primary mb-1">700+</p>
+                    <p className="text-sm text-muted-foreground">empresas investidas</p>
                   </div>
                 </div>
               </CardContent>
@@ -518,7 +493,6 @@ export default function HomePage() {
         </div>
       </section>
 
-            
       {/* Glossary Preview Section */}
       <section id="glossario" className="py-16 px-4">
         <div className="container mx-auto">
@@ -585,8 +559,6 @@ export default function HomePage() {
               Entre em contato conosco.
             </p>
           </div>
-          </div>
-        
 
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
@@ -625,7 +597,6 @@ export default function HomePage() {
                         />
                       </div>
                     </div>
-                    
 
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-2">
@@ -715,7 +686,6 @@ export default function HomePage() {
                 </CardContent>
               </Card>
             </div>
-          </div>
 
             {/* Contact Information */}
             <div className="space-y-6">
@@ -795,33 +765,34 @@ export default function HomePage() {
                   </div>
                 </CardContent>
               </Card>
-            
 
               {/* Map Section */}
-                    <section className="py-16 px-4 bg-card">
-                      <div className="container mx-auto">
-                        <div className="text-center mb-8">
-                          <h2 className="text-3xl font-bold mb-4">Nossa Localização</h2>
-                          <p className="text-muted-foreground">Estamos localizados no coração financeiro de São Paulo</p>
-                        </div>
-              
-                        <Card className="bg-background border-border overflow-hidden">
-                          <div className="aspect-video">
-                            <iframe
-                              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.7234567890123!2d-46.6784567!3d-23.5678901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5a2b2ed7f3a7%3A0x8b8b8b8b8b8b8b8b!2sRua%20Tabapuã%2C%20500%20-%20Itaim%20Bibi%2C%20São%20Paulo%20-%20SP%2C%2004533-001!5e0!3m2!1spt-BR!2sbr!4v1234567890123!5m2!1spt-BR!2sbr"
-                              width="100%"
-                              height="100%"
-                              style={{ border: 0 }}
-                              allowFullScreen
-                              loading="lazy"
-                              referrerPolicy="no-referrer-when-downgrade"
-                              title="Localização Go Live Capital - Rua Tabapuã 500, Itaim Bibi, São Paulo"
-                            />
-                          </div>
-                        </Card>
-                      </div>
-                    </section>
-      
+              <Card className="bg-background border-border overflow-hidden">
+                <CardHeader>
+                  <CardTitle className="text-lg">Nossa Localização</CardTitle>
+                  <CardDescription>Estamos no coração financeiro de São Paulo</CardDescription>
+                </CardHeader>
+                <CardContent className="p-0">
+                  <div className="h-80 w-full rounded-lg overflow-hidden">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.7234567890123!2d-46.6784567!3d-23.5678901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5a2b2ed7f3a7%3A0x8b8b8b8b8b8b8b8b!2sRua%20Tabapuã%2C%20500%20-%20Itaim%20Bibi%2C%20São%20Paulo%20-%20SP%2C%2004533-001!5e0!3m2!1spt-BR!2sbr!4v1234567890123!5m2!1spt-BR!2sbr"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title="Localização Go Live Capital - Rua Tabapuã 500, Itaim Bibi, São Paulo"
+                      className="rounded-lg"
+                    />
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="py-12 px-4 border-t border-border">
         <div className="container mx-auto">
@@ -892,7 +863,5 @@ export default function HomePage() {
         </div>
       </footer>
     </div>
-   </section>  
-  
-
-} 
+  )
+}
