@@ -27,9 +27,11 @@ import {
   Building2,
   Send,
   CheckCircle,
+  Section,
 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { secondsInDay } from "date-fns/constants"
 
 export default function HomePage() {
   const [formData, setFormData] = useState({
@@ -167,9 +169,10 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-{/* Investment Thesis */}
-      <section id="teses" className="py-16 px-4">
+    </div>
+  )
+        {/* Investments Thes */}
+        <section id="teses" className="py-16 px-4">
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Teses de Investimento</h2>
@@ -582,6 +585,8 @@ export default function HomePage() {
               Entre em contato conosco.
             </p>
           </div>
+          </div>
+        
 
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
@@ -620,6 +625,7 @@ export default function HomePage() {
                         />
                       </div>
                     </div>
+                    
 
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-2">
@@ -709,6 +715,7 @@ export default function HomePage() {
                 </CardContent>
               </Card>
             </div>
+          </div>
 
             {/* Contact Information */}
             <div className="space-y-6">
@@ -788,34 +795,33 @@ export default function HomePage() {
                   </div>
                 </CardContent>
               </Card>
+            
 
               {/* Map Section */}
-              <Card className="bg-background border-border overflow-hidden">
-                <CardHeader>
-                  <CardTitle className="text-lg">Nossa Localização</CardTitle>
-                  <CardDescription>Estamos no coração financeiro de São Paulo</CardDescription>
-                </CardHeader>
-                <CardContent className="p-0">
-                  <div className="h-80 rounded-lg overflow-hidden">
-                    <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.7234567890123!2d-46.6784567!3d-23.5678901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5a2b2ed7f3a7%3A0x8b8b8b8b8b8b8b8b!2sRua%20Tabapuã%2C%20500%20-%20Itaim%20Bibi%2C%20São%20Paulo%20-%20SP%2C%2004533-001!5e0!3m2!1spt-BR!2sbr!4v1234567890123!5m2!1spt-BR!2sbr"
-                      width="100%"
-                      height="100%"
-                      style={{ border: 0 }}
-                      allowFullScreen
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                      title="Localização Go Live Capital - Rua Tabapuã 500, Itaim Bibi, São Paulo"
-                      className="rounded-lg"
-                    />
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
+                    <section className="py-16 px-4 bg-card">
+                      <div className="container mx-auto">
+                        <div className="text-center mb-8">
+                          <h2 className="text-3xl font-bold mb-4">Nossa Localização</h2>
+                          <p className="text-muted-foreground">Estamos localizados no coração financeiro de São Paulo</p>
+                        </div>
+              
+                        <Card className="bg-background border-border overflow-hidden">
+                          <div className="aspect-video">
+                            <iframe
+                              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.7234567890123!2d-46.6784567!3d-23.5678901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5a2b2ed7f3a7%3A0x8b8b8b8b8b8b8b8b!2sRua%20Tabapuã%2C%20500%20-%20Itaim%20Bibi%2C%20São%20Paulo%20-%20SP%2C%2004533-001!5e0!3m2!1spt-BR!2sbr!4v1234567890123!5m2!1spt-BR!2sbr"
+                              width="100%"
+                              height="100%"
+                              style={{ border: 0 }}
+                              allowFullScreen
+                              loading="lazy"
+                              referrerPolicy="no-referrer-when-downgrade"
+                              title="Localização Go Live Capital - Rua Tabapuã 500, Itaim Bibi, São Paulo"
+                            />
+                          </div>
+                        </Card>
+                      </div>
+                    </section>
+      
       {/* Footer */}
       <footer className="py-12 px-4 border-t border-border">
         <div className="container mx-auto">
@@ -886,5 +892,7 @@ export default function HomePage() {
         </div>
       </footer>
     </div>
-  )
-}
+   </section>  
+  
+
+} 
