@@ -1,19 +1,13 @@
-"use client";
+"use client"
 
-import type React from "react";
+import type React from "react"
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
 import {
   ArrowRight,
   Target,
@@ -30,9 +24,9 @@ import {
   Building2,
   Send,
   CheckCircle,
-} from "lucide-react";
-import Link from "next/link";
-import Image from "next/image";
+} from "lucide-react"
+import Link from "next/link"
+import Image from "next/image"
 
 export default function HomePage() {
   const [formData, setFormData] = useState({
@@ -42,23 +36,23 @@ export default function HomePage() {
     telefone: "",
     assunto: "",
     mensagem: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+    e.preventDefault()
+    setIsSubmitting(true)
 
     // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 2000))
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    setIsSubmitting(false)
+    setIsSubmitted(true)
 
     // Reset form after 3 seconds
     setTimeout(() => {
-      setIsSubmitted(false);
+      setIsSubmitted(false)
       setFormData({
         nome: "",
         empresa: "",
@@ -66,19 +60,17 @@ export default function HomePage() {
         telefone: "",
         assunto: "",
         mensagem: "",
-      });
-    }, 3000);
-  };
+      })
+    }, 3000)
+  }
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { id, value } = e.target;
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target
     setFormData((prev) => ({
       ...prev,
       [id]: value,
-    }));
-  };
+    }))
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -96,28 +88,16 @@ export default function HomePage() {
               />
             </div>
             <div className="hidden md:flex items-center space-x-6">
-              <a
-                href="#sobre"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
+              <a href="#sobre" className="text-muted-foreground hover:text-foreground transition-colors">
                 Sobre
               </a>
-              <a
-                href="#time"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
+              <a href="#time" className="text-muted-foreground hover:text-foreground transition-colors">
                 Time
               </a>
-              <a
-                href="#teses"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
+              <a href="#teses" className="text-muted-foreground hover:text-foreground transition-colors">
                 Teses
               </a>
-              <a
-                href="#glossario"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
+              <a href="#glossario" className="text-muted-foreground hover:text-foreground transition-colors">
                 Glossário
               </a>
               <a
@@ -135,20 +115,14 @@ export default function HomePage() {
       <section className="py-20 px-4">
         <div className="container mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">
-            Resultados preparam{" "}
-            <span className="text-primary">novos ciclos</span>
+            Resultados preparam <span className="text-primary">novos ciclos</span>
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto text-pretty">
-            A Go Live Capital é uma empresa de investimentos que opera no modelo
-            Sênior Search Fund, focada em empresas de tecnologia, software e
-            serviços com receita recorrente e potencial de crescimento.
+            A Go Live Capital é uma empresa de investimentos que opera no modelo Sênior Search Fund, focada em empresas
+            de tecnologia, software e serviços com receita recorrente e potencial de crescimento.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              asChild
-              className="bg-primary text-primary-foreground hover:bg-primary/90"
-            >
+            <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
               <Link href="#contato">
                 Conheça nossa estratégia
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -164,9 +138,8 @@ export default function HomePage() {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-6">Sobre a Go Live Capital</h2>
             <p className="text-muted-foreground mb-8 leading-relaxed text-lg">
-              Investida pela Spectra Investments e fundada por Walter Leandro
-              Marques, nosso objetivo é adquirir empresas de tecnologia com
-              receita predominante em recorrência e geração de caixa positivo.
+              Investida pela Spectra Investments e fundada por Walter Leandro Marques, nosso objetivo é adquirir
+              empresas de tecnologia com receita predominante em recorrência e geração de caixa positivo.
             </p>
             <div className="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
               <div className="flex flex-col items-center text-center space-y-3">
@@ -174,20 +147,16 @@ export default function HomePage() {
                 <div>
                   <h3 className="font-semibold mb-2">Foco Estratégico</h3>
                   <p className="text-sm text-muted-foreground">
-                    Empresas de software como serviço (SaaS) B2B e Fintechs de
-                    infraestrutura
+                    Empresas de software como serviço (SaaS) B2B e Fintechs de infraestrutura
                   </p>
                 </div>
               </div>
               <div className="flex flex-col items-center text-center space-y-3">
                 <TrendingUp className="h-8 w-8 text-primary" />
                 <div>
-                  <h3 className="font-semibold mb-2">
-                    Potencial de Crescimento
-                  </h3>
+                  <h3 className="font-semibold mb-2">Potencial de Crescimento</h3>
                   <p className="text-sm text-muted-foreground">
-                    Buscamos empresas com potencial para gerar retornos acima
-                    dos padrões esperados
+                    Buscamos empresas com potencial para gerar retornos acima dos padrões esperados
                   </p>
                 </div>
               </div>
@@ -202,8 +171,7 @@ export default function HomePage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Teses de Investimento</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Nosso foco são empresas de software como serviço (SaaS) B2B e
-              Fintechs de infraestrutura
+              Nosso foco são empresas de software como serviço (SaaS) B2B e Fintechs de infraestrutura
             </p>
           </div>
 
@@ -219,14 +187,10 @@ export default function HomePage() {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Empresas com perfil de sucessão, crescimento e margem
-                  alinhadas com rule of 40. Geralmente empresas de nicho,
-                  verticais (VSaaS).
+                  Empresas com perfil de sucessão, crescimento e margem alinhadas com rule of 40. Geralmente empresas de
+                  nicho, verticais (VSaaS).
                 </p>
-                <Badge
-                  variant="outline"
-                  className="border-primary/20 text-primary"
-                >
+                <Badge variant="outline" className="border-primary/20 text-primary">
                   Rule of 40
                 </Badge>
               </CardContent>
@@ -243,14 +207,10 @@ export default function HomePage() {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Empresas crescendo acima dos concorrentes e/ou em mercados com
-                  crescimento exponencial. Podem ter prêmio em relação às
-                  empresas clássicas.
+                  Empresas crescendo acima dos concorrentes e/ou em mercados com crescimento exponencial. Podem ter
+                  prêmio em relação às empresas clássicas.
                 </p>
-                <Badge
-                  variant="outline"
-                  className="border-primary/20 text-primary"
-                >
+                <Badge variant="outline" className="border-primary/20 text-primary">
                   Alto Crescimento
                 </Badge>
               </CardContent>
@@ -267,14 +227,10 @@ export default function HomePage() {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Empresas com valor a ser destravado, que não estão crescendo
-                  como a maioria do segmento. Faturamento elevado com desconto
-                  no valuation.
+                  Empresas com valor a ser destravado, que não estão crescendo como a maioria do segmento. Faturamento
+                  elevado com desconto no valuation.
                 </p>
-                <Badge
-                  variant="outline"
-                  className="border-primary/20 text-primary"
-                >
+                <Badge variant="outline" className="border-primary/20 text-primary">
                   Valor Destravado
                 </Badge>
               </CardContent>
@@ -284,30 +240,22 @@ export default function HomePage() {
           <Card className="bg-card border-border">
             <CardHeader>
               <CardTitle>Critérios de Elegibilidade</CardTitle>
-              <CardDescription>
-                Requisitos fundamentais para empresas do nosso portfólio
-              </CardDescription>
+              <CardDescription>Requisitos fundamentais para empresas do nosso portfólio</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="space-y-3">
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-sm">
-                      Maioria de receitas em software versus serviços
-                    </span>
+                    <span className="text-sm">Maioria de receitas em software versus serviços</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-sm">
-                      Receitas recorrentes e com previsibilidade
-                    </span>
+                    <span className="text-sm">Receitas recorrentes e com previsibilidade</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-sm">
-                      Serviços ou softwares de missão crítica
-                    </span>
+                    <span className="text-sm">Serviços ou softwares de missão crítica</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
@@ -317,21 +265,15 @@ export default function HomePage() {
                 <div className="space-y-3">
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-sm">
-                      Sem endividamento ou baixa alavancagem
-                    </span>
+                    <span className="text-sm">Sem endividamento ou baixa alavancagem</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-sm">
-                      Mercados atrativos e com crescimento
-                    </span>
+                    <span className="text-sm">Mercados atrativos e com crescimento</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-sm">
-                      Produtos/serviços com alta especialização
-                    </span>
+                    <span className="text-sm">Produtos/serviços com alta especialização</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
@@ -350,8 +292,7 @@ export default function HomePage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Nosso Time</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Profissionais experientes com histórico comprovado em M&A,
-              empreendedorismo e investimentos
+              Profissionais experientes com histórico comprovado em M&A, empreendedorismo e investimentos
             </p>
           </div>
 
@@ -360,18 +301,10 @@ export default function HomePage() {
             <Card className="bg-card border-border">
               <CardHeader className="text-center">
                 <div className="w-20 h-20 bg-muted rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
-                  <img
-                    src="/images/leandro.png"
-                    alt="Walter Leandro Marques"
-                    className="w-full h-full object-cover"
-                  />
+                  <img src="/images/leandro.png" alt="Walter Leandro Marques" className="w-full h-full object-cover" />
                 </div>
-                <CardTitle className="text-lg">
-                  Walter Leandro Marques
-                </CardTitle>
-                <CardDescription className="text-primary font-medium">
-                  Fundador & CEO
-                </CardDescription>
+                <CardTitle className="text-lg">Walter Leandro Marques</CardTitle>
+                <CardDescription className="text-primary font-medium">Fundador & CEO</CardDescription>
                 <a
                   href="https://www.linkedin.com/in/walterleandro/"
                   target="_blank"
@@ -389,21 +322,15 @@ export default function HomePage() {
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2">
                     <Briefcase className="h-3 w-3 text-primary flex-shrink-0" />
-                    <span className="text-xs text-muted-foreground">
-                      Co-fundador Tray & Pagamento Digital
-                    </span>
+                    <span className="text-xs text-muted-foreground">Co-fundador Tray & Pagamento Digital</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Award className="h-3 w-3 text-primary flex-shrink-0" />
-                    <span className="text-xs text-muted-foreground">
-                      7 anos experiência M&A
-                    </span>
+                    <span className="text-xs text-muted-foreground">7 anos experiência M&A</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <TrendingUp className="h-3 w-3 text-primary flex-shrink-0" />
-                    <span className="text-xs text-muted-foreground">
-                      Investidor anjo ativo
-                    </span>
+                    <span className="text-xs text-muted-foreground">Investidor anjo ativo</span>
                   </div>
                 </div>
               </CardContent>
@@ -413,16 +340,10 @@ export default function HomePage() {
             <Card className="bg-card border-border">
               <CardHeader className="text-center">
                 <div className="w-20 h-20 bg-muted rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
-                  <img
-                    src="/images/gustavo.png"
-                    alt="Gustavo Rinaldi"
-                    className="w-full h-full object-cover"
-                  />
+                  <img src="/images/gustavo.png" alt="Gustavo Rinaldi" className="w-full h-full object-cover" />
                 </div>
                 <CardTitle className="text-lg">Gustavo Rinaldi</CardTitle>
-                <CardDescription className="text-primary font-medium">
-                  Partner at Go Live Capital
-                </CardDescription>
+                <CardDescription className="text-primary font-medium">Partner at Go Live Capital</CardDescription>
                 <a
                   href="https://www.linkedin.com/in/gustavo-rinaldi-85285384/"
                   target="_blank"
@@ -433,28 +354,20 @@ export default function HomePage() {
                 </a>
               </CardHeader>
               <CardContent className="space-y-3">
-                <p className="text-sm text-muted-foreground text-center">
-                  Descrição da experiência profissional
-                </p>
+                <p className="text-sm text-muted-foreground text-center">Descrição da experiência profissional</p>
 
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2">
                     <Briefcase className="h-3 w-3 text-primary flex-shrink-0" />
-                    <span className="text-xs text-muted-foreground">
-                      Experiência anterior
-                    </span>
+                    <span className="text-xs text-muted-foreground">Experiência anterior</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Award className="h-3 w-3 text-primary flex-shrink-0" />
-                    <span className="text-xs text-muted-foreground">
-                      Especialização
-                    </span>
+                    <span className="text-xs text-muted-foreground">Especialização</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <TrendingUp className="h-3 w-3 text-primary flex-shrink-0" />
-                    <span className="text-xs text-muted-foreground">
-                      Conquistas relevantes
-                    </span>
+                    <span className="text-xs text-muted-foreground">Conquistas relevantes</span>
                   </div>
                 </div>
               </CardContent>
@@ -464,16 +377,10 @@ export default function HomePage() {
             <Card className="bg-card border-border">
               <CardHeader className="text-center">
                 <div className="w-20 h-20 bg-muted rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
-                  <img
-                    src="/images/joao.png"
-                    alt="João Paulo Matos"
-                    className="w-full h-full object-cover"
-                  />
+                  <img src="/images/joao.png" alt="João Paulo Matos" className="w-full h-full object-cover" />
                 </div>
                 <CardTitle className="text-lg">João Paulo Matos</CardTitle>
-                <CardDescription className="text-primary font-medium">
-                  Cargo/Função
-                </CardDescription>
+                <CardDescription className="text-primary font-medium">Cargo/Função</CardDescription>
                 <a
                   href="https://www.linkedin.com/in/joaopaulomatosmelo/"
                   target="_blank"
@@ -484,28 +391,20 @@ export default function HomePage() {
                 </a>
               </CardHeader>
               <CardContent className="space-y-3">
-                <p className="text-sm text-muted-foreground text-center">
-                  Descrição da experiência profissional
-                </p>
+                <p className="text-sm text-muted-foreground text-center">Descrição da experiência profissional</p>
 
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2">
                     <Briefcase className="h-3 w-3 text-primary flex-shrink-0" />
-                    <span className="text-xs text-muted-foreground">
-                      Experiência anterior
-                    </span>
+                    <span className="text-xs text-muted-foreground">Experiência anterior</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Award className="h-3 w-3 text-primary flex-shrink-0" />
-                    <span className="text-xs text-muted-foreground">
-                      Especialização
-                    </span>
+                    <span className="text-xs text-muted-foreground">Especialização</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <TrendingUp className="h-3 w-3 text-primary flex-shrink-0" />
-                    <span className="text-xs text-muted-foreground">
-                      Conquistas relevantes
-                    </span>
+                    <span className="text-xs text-muted-foreground">Conquistas relevantes</span>
                   </div>
                 </div>
               </CardContent>
@@ -515,16 +414,10 @@ export default function HomePage() {
             <Card className="bg-card border-border">
               <CardHeader className="text-center">
                 <div className="w-20 h-20 bg-muted rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
-                  <img
-                    src="/images/wagner.png"
-                    alt="Wagner Bocchi"
-                    className="w-full h-full object-cover"
-                  />
+                  <img src="/images/wagner.png" alt="Wagner Bocchi" className="w-full h-full object-cover" />
                 </div>
                 <CardTitle className="text-lg">Wagner Bocchi</CardTitle>
-                <CardDescription className="text-primary font-medium">
-                  Cargo/Função
-                </CardDescription>
+                <CardDescription className="text-primary font-medium">Cargo/Função</CardDescription>
                 <a
                   href="https://linkedin.com/in/wagner-bocchi/"
                   target="_blank"
@@ -535,28 +428,20 @@ export default function HomePage() {
                 </a>
               </CardHeader>
               <CardContent className="space-y-3">
-                <p className="text-sm text-muted-foreground text-center">
-                  Descrição da experiência profissional
-                </p>
+                <p className="text-sm text-muted-foreground text-center">Descrição da experiência profissional</p>
 
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2">
                     <Briefcase className="h-3 w-3 text-primary flex-shrink-0" />
-                    <span className="text-xs text-muted-foreground">
-                      Experiência anterior
-                    </span>
+                    <span className="text-xs text-muted-foreground">Experiência anterior</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Award className="h-3 w-3 text-primary flex-shrink-0" />
-                    <span className="text-xs text-muted-foreground">
-                      Especialização
-                    </span>
+                    <span className="text-xs text-muted-foreground">Especialização</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <TrendingUp className="h-3 w-3 text-primary flex-shrink-0" />
-                    <span className="text-xs text-muted-foreground">
-                      Conquistas relevantes
-                    </span>
+                    <span className="text-xs text-muted-foreground">Conquistas relevantes</span>
                   </div>
                 </div>
               </CardContent>
@@ -582,35 +467,24 @@ export default function HomePage() {
                   />
                 </div>
                 <CardTitle className="text-xl">Spectra Investments</CardTitle>
-                <CardDescription className="text-primary font-medium">
-                  Investidora Estratégica
-                </CardDescription>
+                <CardDescription className="text-primary font-medium">Investidora Estratégica</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <p className="text-sm text-muted-foreground text-center max-w-2xl mx-auto">
-                  Gestora brasileira líder em ativos alternativos na América
-                  Latina, fundada em 2012
+                  Gestora brasileira líder em ativos alternativos na América Latina, fundada em 2012
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl mx-auto">
                   <div className="text-center">
-                    <p className="text-2xl font-bold text-primary mb-1">
-                      R$ 7 bi
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      de Capital sob gestão
-                    </p>
+                    <p className="text-2xl font-bold text-primary mb-1">R$ 7 bi</p>
+                    <p className="text-sm text-muted-foreground">de Capital sob gestão</p>
                   </div>
                   <div className="text-center">
-                    <p className="text-2xl font-bold text-primary mb-1">
-                      + 13 anos
-                    </p>
+                    <p className="text-2xl font-bold text-primary mb-1">+ 13 anos</p>
                     <p className="text-sm text-muted-foreground">de história</p>
                   </div>
                   <div className="text-center">
                     <p className="text-2xl font-bold text-primary mb-1">700+</p>
-                    <p className="text-sm text-muted-foreground">
-                      empresas investidas
-                    </p>
+                    <p className="text-sm text-muted-foreground">empresas investidas</p>
                   </div>
                 </div>
               </CardContent>
@@ -623,12 +497,9 @@ export default function HomePage() {
       <section id="glossario" className="py-16 px-4">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">
-              Glossário sobre Search Fund
-            </h2>
+            <h2 className="text-3xl font-bold mb-4">Recursos sobre Search Fund</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Acesse nossa biblioteca completa de estudos, guias e artigos sobre
-              o modelo Search Fund
+              Acesse nossa biblioteca completa de estudos, guias e artigos sobre o modelo Search Fund
             </p>
           </div>
 
@@ -639,9 +510,7 @@ export default function HomePage() {
                   <BookOpen className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle>Guias Fundamentais</CardTitle>
-                <CardDescription>
-                  7 recursos essenciais para entender o modelo Search Fund
-                </CardDescription>
+                <CardDescription>7 recursos essenciais para entender o modelo Search Fund</CardDescription>
               </CardHeader>
             </Card>
 
@@ -651,9 +520,7 @@ export default function HomePage() {
                   <Users className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle>Estudos Acadêmicos</CardTitle>
-                <CardDescription>
-                  Pesquisas de Stanford e IESE sobre Search Fund (2016-2024)
-                </CardDescription>
+                <CardDescription>Pesquisas de Stanford e IESE sobre Search Fund (2016-2024)</CardDescription>
               </CardHeader>
             </Card>
 
@@ -663,19 +530,13 @@ export default function HomePage() {
                   <TrendingUp className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle>Cobertura da Mídia</CardTitle>
-                <CardDescription>
-                  11 artigos de veículos especializados sobre Search Fund
-                </CardDescription>
+                <CardDescription>11 artigos de veículos especializados sobre Search Fund</CardDescription>
               </CardHeader>
             </Card>
           </div>
 
           <div className="text-center">
-            <Button
-              size="lg"
-              asChild
-              className="bg-primary text-primary-foreground hover:bg-primary/90"
-            >
+            <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
               <Link href="/glossario">
                 Acessar Glossário Completo
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -684,32 +545,55 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      
+      {/* Call to Action */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto text-center">
+          <Card className="bg-card border-border max-w-2xl mx-auto">
+            <CardHeader>
+              <CardTitle className="text-2xl">Tem uma empresa para vender?</CardTitle>
+              <CardDescription>
+                Verificamos se sua empresa se encaixa no nosso perfil de investimento.
 
-      {/* Contact Section */}
-      <section id="contato" className="py-16 px-4 bg-card">
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+                <CardContent>
+                  <div className="space-y-3 text-sm">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span>Receita recorrente (SaaS/Fintech)</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span>Geração de caixa positivo</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span>Potencial de crescimento</span>
+                    </div>
+                  </div>
+                </CardContent>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+                  Agendar Reunião
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+            {/* Contact Form & Info */}
+      <section className="py-16 px-4">
         <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <Badge className="mb-6 badge-high-contrast">Entre em Contato</Badge>
-            <h2 className="text-3xl font-bold mb-4">
-              Vamos conversar sobre{" "}
-              <span className="text-primary">oportunidades</span>
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Interessado em saber mais sobre nossos investimentos ou tem uma
-              empresa que se encaixa no nosso perfil? Entre em contato conosco.
-            </p>
-          </div>
-
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div>
-              <Card className="bg-background border-border">
+              <Card className="bg-card border-border">
                 <CardHeader>
                   <CardTitle className="text-2xl">Envie sua mensagem</CardTitle>
-                  <CardDescription>
-                    Preencha o formulário abaixo e entraremos em contato em
-                    breve
-                  </CardDescription>
+                  <CardDescription>Preencha o formulário abaixo e entraremos em contato em breve</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <form onSubmit={handleSubmit} className="space-y-6">
@@ -721,23 +605,20 @@ export default function HomePage() {
                         <Input
                           id="nome"
                           placeholder="Seu nome completo"
-                          className="bg-card border-border"
+                          className="bg-background border-border"
                           value={formData.nome}
                           onChange={handleInputChange}
                           required
                         />
                       </div>
                       <div className="space-y-2">
-                        <label
-                          htmlFor="empresa"
-                          className="text-sm font-medium"
-                        >
+                        <label htmlFor="empresa" className="text-sm font-medium">
                           Empresa
                         </label>
                         <Input
                           id="empresa"
                           placeholder="Nome da empresa"
-                          className="bg-card border-border"
+                          className="bg-background border-border"
                           value={formData.empresa}
                           onChange={handleInputChange}
                         />
@@ -753,23 +634,20 @@ export default function HomePage() {
                           id="email"
                           type="email"
                           placeholder="seu@email.com"
-                          className="bg-card border-border"
+                          className="bg-background border-border"
                           value={formData.email}
                           onChange={handleInputChange}
                           required
                         />
                       </div>
                       <div className="space-y-2">
-                        <label
-                          htmlFor="telefone"
-                          className="text-sm font-medium"
-                        >
+                        <label htmlFor="telefone" className="text-sm font-medium">
                           Telefone
                         </label>
                         <Input
                           id="telefone"
                           placeholder="(11) 99999-9999"
-                          className="bg-card border-border"
+                          className="bg-background border-border"
                           value={formData.telefone}
                           onChange={handleInputChange}
                         />
@@ -783,7 +661,7 @@ export default function HomePage() {
                       <Input
                         id="assunto"
                         placeholder="Sobre o que gostaria de falar?"
-                        className="bg-card border-border"
+                        className="bg-background border-border"
                         value={formData.assunto}
                         onChange={handleInputChange}
                         required
@@ -798,7 +676,7 @@ export default function HomePage() {
                         id="mensagem"
                         placeholder="Descreva sua mensagem, projeto ou oportunidade..."
                         rows={6}
-                        className="bg-card border-border resize-none"
+                        className="bg-background border-border resize-none"
                         value={formData.mensagem}
                         onChange={handleInputChange}
                         required
@@ -830,8 +708,7 @@ export default function HomePage() {
                   </form>
 
                   <p className="text-xs text-muted-foreground">
-                    * Campos obrigatórios. Seus dados serão tratados com
-                    confidencialidade.
+                    * Campos obrigatórios. Seus dados serão tratados com confidencialidade.
                   </p>
                 </CardContent>
               </Card>
@@ -839,7 +716,7 @@ export default function HomePage() {
 
             {/* Contact Information */}
             <div className="space-y-6">
-              <Card className="bg-background border-border">
+              <Card className="bg-card border-border">
                 <CardHeader>
                   <CardTitle className="text-xl flex items-center">
                     <Building2 className="mr-3 h-5 w-5 text-primary" />
@@ -865,9 +742,7 @@ export default function HomePage() {
                     <Mail className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-semibold mb-1">Email</h3>
-                      <p className="text-sm text-muted-foreground">
-                        contato@golivecap.com.br
-                      </p>
+                      <p className="text-sm text-muted-foreground">contato@golivecap.com.br</p>
                     </div>
                   </div>
 
@@ -875,18 +750,14 @@ export default function HomePage() {
                     <Phone className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-semibold mb-1">Telefone</h3>
-                      <p className="text-sm text-muted-foreground">
-                        +55 (11) 3000-0000
-                      </p>
+                      <p className="text-sm text-muted-foreground">+55 (11) 3000-0000</p>
                     </div>
                   </div>
 
                   <div className="flex items-start space-x-3">
                     <Clock className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                     <div>
-                      <h3 className="font-semibold mb-1">
-                        Horário de Atendimento
-                      </h3>
+                      <h3 className="font-semibold mb-1">Horário de Atendimento</h3>
                       <p className="text-sm text-muted-foreground">
                         Segunda a Sexta: 9h às 18h
                         <br />
@@ -897,64 +768,51 @@ export default function HomePage() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-background border-border">
+              <Card className="bg-card border-border">
                 <CardHeader>
-                  <CardTitle className="text-lg">
-                    Tem uma empresa para vender?
-                  </CardTitle>
-                  <CardDescription>
-                    Verificamos se sua empresa se encaixa no nosso perfil de
-                    investimento
-                  </CardDescription>
+                  <CardTitle className="text-xl">Website</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-3 text-sm">
-                    <div className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      <span>Receita recorrente (SaaS/Fintech)</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      <span>Geração de caixa positivo</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      <span>Potencial de crescimento</span>
-                    </div>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-primary rounded-full"></div>
+                    <a
+                      href="https://www.golive.capital"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:text-primary/80 transition-colors"
+                    >
+                      www.golive.capital
+                    </a>
                   </div>
                 </CardContent>
               </Card>
-
-              {/* Map Section */}
-              <section className="py-16 px-4 bg-card">
-                <div className="container mx-auto">
-                  <div className="text-center mb-8">
-                    <h2 className="text-3xl font-bold mb-4">
-                      Nossa Localização
-                    </h2>
-                    <p className="text-muted-foreground">
-                      Estamos localizados no coração financeiro de São Paulo
-                    </p>
-                  </div>
-
-                  <Card className="bg-background border-border overflow-hidden">
-                    <div className="aspect-video">
-                      <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.7234567890123!2d-46.6784567!3d-23.5678901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5a2b2ed7f3a7%3A0x8b8b8b8b8b8b8b8b!2sRua%20Tabapuã%2C%20500%20-%20Itaim%20Bibi%2C%20São%20Paulo%20-%20SP%2C%2004533-001!5e0!3m2!1spt-BR!2sbr!4v1234567890123!5m2!1spt-BR!2sbr"
-                        width="100%"
-                        height="100%"
-                        style={{ border: 0 }}
-                        allowFullScreen
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                        title="Localização Go Live Capital - Rua Tabapuã 500, Itaim Bibi, São Paulo"
-                      />
-                    </div>
-                  </Card>
-                </div>
-              </section>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Map Section */}
+      <section className="py-16 px-4 bg-card">
+        <div className="container mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold mb-4">Nossa Localização</h2>
+            <p className="text-muted-foreground">Estamos localizados no coração financeiro de São Paulo</p>
+          </div>
+
+          <Card className="bg-background border-border overflow-hidden">
+            <div className="aspect-video">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.7234567890123!2d-46.6784567!3d-23.5678901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5a2b2ed7f3a7%3A0x8b8b8b8b8b8b8b8b!2sRua%20Tabapuã%2C%20500%20-%20Itaim%20Bibi%2C%20São%20Paulo%20-%20SP%2C%2004533-001!5e0!3m2!1spt-BR!2sbr!4v1234567890123!5m2!1spt-BR!2sbr"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Localização Go Live Capital - Rua Tabapuã 500, Itaim Bibi, São Paulo"
+              />
+            </div>
+          </Card>
         </div>
       </section>
 
@@ -972,12 +830,8 @@ export default function HomePage() {
                   className="h-8 w-auto"
                 />
               </div>
-              <p className="text-muted-foreground text-sm mb-4">
-                Resultados preparam novos ciclos
-              </p>
-              <p className="text-muted-foreground text-sm">
-                www.golive.capital
-              </p>
+              <p className="text-muted-foreground text-sm mb-4">Resultados preparam novos ciclos</p>
+              <p className="text-muted-foreground text-sm">www.golive.capital</p>
             </div>
             <div>
               <h3 className="font-semibold mb-4">Endereço</h3>
@@ -996,10 +850,7 @@ export default function HomePage() {
                 >
                   Sobre a Empresa
                 </a>
-                <a
-                  href="#time"
-                  className="block text-muted-foreground text-sm hover:text-foreground transition-colors"
-                >
+                <a href="#time" className="block text-muted-foreground text-sm hover:text-foreground transition-colors">
                   Nosso Time
                 </a>
                 <a
@@ -1030,12 +881,10 @@ export default function HomePage() {
             </div>
           </div>
           <div className="border-t border-border mt-8 pt-8 text-center">
-            <p className="text-muted-foreground text-sm">
-              © 2025 Go Live Capital. Todos os direitos reservados.
-            </p>
+            <p className="text-muted-foreground text-sm">© 2025 Go Live Capital. Todos os direitos reservados.</p>
           </div>
         </div>
-      </footer>
+        </footer>
     </div>
-  );
+  )
 }
