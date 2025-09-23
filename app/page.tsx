@@ -624,7 +624,7 @@ export default function HomePage() {
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">
-              Recursos sobre Search Fund
+              Glossário sobre Search Fund
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Acesse nossa biblioteca completa de estudos, guias e artigos sobre
