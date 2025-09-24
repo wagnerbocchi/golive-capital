@@ -852,12 +852,6 @@ export default function HomePage() {
                 </a>
                 <a href="#time" className="block text-muted-foreground text-sm hover:text-foreground transition-colors">
                   Nosso Time
-                </a>
-                <a
-                  href="#teses"
-                  className="block text-muted-foreground text-sm hover:text-foreground transition-colors"
-                >
-                  Teses de Investimento
                 </a>                
                 <a
                   href="#glossario"
