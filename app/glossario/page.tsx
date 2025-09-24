@@ -6,109 +6,109 @@ import Link from "next/link"
 
 export default function GlossarioPage() {
   const searchFundBasics = [
-    { title: "Introdução aos Search Funds", url: "https://searchfund.org/introduction" },
-    { title: "O que é um Search Fund", url: "https://searchfund.org/what-is-search-fund" },
-    { title: "Nota para os investidores iniciantes em Search Fund", url: "https://searchfund.org/beginner-investors" },
-    { title: "Aprendendo sobre Search Fund", url: "https://searchfund.org/learning" },
-    { title: "Oportunidades e riscos de Search Fund", url: "https://searchfund.org/opportunities-risks" },
+    { title: "Introdução aos Search Funds", url: "https://cdn.prod.website-files.com/6455268783d6938b9451ea80/6455268783d693246351eaa1_2020-Search-Fund-Primer%20(1).pdf" },
+    { title: "O que é um Search Fund", url: "https://www.gsb.stanford.edu/experience/about/centers-institutes/ces/research/search-funds" },
+    { title: "Nota para os investidores iniciantes em Search Fund", url: "https://cdn.prod.website-files.com/6455268783d6938b9451ea80/659d5be282dce51c9a75404a_21.%20A%20Note%20to%20Investors%20Who%20are%20New%20to%20Search%20Funds.pdf" },
+    { title: "Aprendendo sobre Search Fund", url: "https://jimsteinsharpe.com/learning-about-search/" },
+    { title: "Oportunidades e riscos de Search Fund", url: "https://www.iese.edu/insight/articles/search-funds-opportunities-risks/" },
     {
       title: "Lista com mais de 40 dos melhores estudos de caso de Search Fund",
-      url: "https://searchfund.org/case-studies",
+      url: "https://jimsteinsharpe.com/case-histories/",
     },
-    { title: "Guia Jurídico sobre Search Fund no Brasil", url: "https://searchfund.org/legal-guide-brazil" },
+    { title: "Guia Jurídico sobre Search Fund no Brasil", url: "https://documentos.spectrainvest.com/ComunicadosInvest/Legal%20Guide%20about%20Brazilian%20Search%20Funds.pdf" },
   ]
 
   const stanfordStudies = [
     {
       year: "2024",
       title: "Estudo de 2024",
-      url: "https://www.gsb.stanford.edu/faculty-research/centers-initiatives/ces/research/search-funds/primer",
+      url: "https://www.gsb.stanford.edu/faculty-research/case-studies/2024-search-fund-study",
     },
     {
       year: "2022",
       title: "Estudo de 2022",
-      url: "https://www.gsb.stanford.edu/faculty-research/centers-initiatives/ces/research/search-funds/study-2022",
+      url: "https://www.gsb.stanford.edu/faculty-research/case-studies/2022-search-fund-study-selected-observations",
     },
     {
       year: "2020",
       title: "Estudo de 2020",
-      url: "https://www.gsb.stanford.edu/faculty-research/centers-initiatives/ces/research/search-funds/study-2020",
+      url: "https://www.gsb.stanford.edu/faculty-research/case-studies/2020-search-fund-study-selected-observations",
     },
     {
       year: "2018",
       title: "Estudo de 2018",
-      url: "https://www.gsb.stanford.edu/faculty-research/centers-initiatives/ces/research/search-funds/study-2018",
+      url: "https://www.gsb.stanford.edu/faculty-research/case-studies/2018-search-fund-study-selected-observations",
     },
     {
       year: "2016",
       title: "Estudo de 2016",
-      url: "https://www.gsb.stanford.edu/faculty-research/centers-initiatives/ces/research/search-funds/study-2016",
+      url: "https://www.gsb.stanford.edu/faculty-research/case-studies/2016-search-fund-study-selected-observations",
     },
   ]
 
   const ieseStudies = [
-    { year: "2024", title: "Estudo de 2024", url: "https://www.iese.edu/research/search-funds/study-2024" },
-    { year: "2022", title: "Estudo de 2022", url: "https://www.iese.edu/research/search-funds/study-2022" },
-    { year: "2020", title: "Estudo de 2020", url: "https://www.iese.edu/research/search-funds/study-2020" },
-    { year: "2018", title: "Estudo de 2018", url: "https://www.iese.edu/research/search-funds/study-2018" },
-    { year: "2016", title: "Estudo de 2016", url: "https://www.iese.edu/research/search-funds/study-2016" },
+    { year: "2024", title: "Estudo de 2024", url: "https://www.iese.edu/media/research/pdfs/ST-0658-E?_gl=1*d6q99o*_gcl_au*ODQ5MjEzMDQ3LjE3NTI1MjQ0OTMuMjAxMzI0MDU4My4xNzUyNTI0NzczLjE3NTI1MjQ3OTM.*_ga*MTM1MTM2NTA4Ni4xNzUyNTI0NDkz*_ga_CT6B5L0DNL*czE3NTI1MjQ0OTAkbzEkZzEkdDE3NTI1MjQ4MDAkajU3JGwwJGgw" },
+    { year: "2022", title: "Estudo de 2022", url: "https://www.iese.edu/media/research/pdfs/ST-0629-E.pdf" },
+    { year: "2020", title: "Estudo de 2020", url: "https://www.iese.edu/media/research/pdfs/ST-0603-E.pdf" },
+    { year: "2018", title: "Estudo de 2018", url: "https://awaytolearn.iese.edu/wp-content/uploads/2018/09/2018-Intl-Search-Fund-Study.pdf" },
+    { year: "2016", title: "Estudo de 2016", url: "https://www.iese.edu/media/research/pdfs/ST-0415-E.pdf" },
   ]
 
   const newsArticles = [
     {
       title: "Os figurões do MBA só querem um acordo único de private equity",
       source: "Financial Times",
-      url: "https://www.ft.com/content/search-funds-mba",
+      url: "https://www.ft.com/content/949d8ad4-eb1a-4ed4-a89b-f7048eec07ae",
     },
     {
       title: "Jovens empreendedores encontram uma maneira de realizar seus sonhos de CEO",
       source: "NY Times",
-      url: "https://www.nytimes.com/search-funds-entrepreneurs",
+      url: "https://www.nytimes.com/2024/03/15/business/entrepreneurs-startups-search-fund.html",
     },
     {
       title: "Por Que Investir Em Search Funds No Brasil",
       source: "Exame",
-      url: "https://exame.com/invest/search-funds-brasil",
+      url: "https://exame.com/lideres-extraordinarios/financas/por-que-investir-em-search-funds-no-brasil/",
     },
     {
       title: "O que saber sobre fundos de busca",
       source: "Forbes",
-      url: "https://forbes.com/search-funds-guide",
+      url: "https://www.forbes.com/councils/forbesagencycouncil/2023/09/06/redefining-entrepreneurship-what-to-know-about-search-funds/",
     },
     {
       title: "Entenda O Que É Um Search Fund",
       source: "O Globo",
-      url: "https://oglobo.globo.com/economia/search-fund",
+      url: "https://oglobo.globo.com/economia/noticia/2023/07/entenda-o-que-e-um-search-fund-o-novo-tipo-de-fundo-de-investimentos-a-caca-de-empresas-promissoras-no-brasil.ghtml",
     },
     {
       title: "Pesquisar Fundos Ganham Espaço No Brasil",
       source: "Valor Econômico",
-      url: "https://valor.globo.com/financas/search-funds-brasil",
+      url: "https://valor.globo.com/financas/noticia/2023/04/05/search-funds-ganham-espaco-no-brasil.ghtml",
     },
     {
       title: "Modelo de Empreendedorismo Por Aquisição Cresce No Brasil",
       source: "Exame",
-      url: "https://exame.com/pme/empreendedorismo-aquisicao-brasil",
+      url: "https://exame.com/invest/mercados/empreender-por-aquisicao-e-com-tudo-pago-modelo-importado-de-stanford-cresce-no-brasil/",
     },
     {
       title: "Última proposta de MBAs para investidores: deixem a startup de lado, invistam em mim",
       source: "WSJ",
-      url: "https://www.wsj.com/articles/search-funds-mba-investors",
+      url: "https://www.wsj.com/articles/m-b-a-s-latest-pitch-investors-startup-business-school-spac-11647457255",
     },
     {
       title: "Como graduados em MBA empreendedor podem se beneficiar de fundos de pesquisa",
       source: "Fortune",
-      url: "https://fortune.com/mba-search-funds",
+      url: "https://fortune.com/next/education/articles/how-entrepreneurial-mba-grads-can-benefit-from-search-funds/?noredirect=1",
     },
     {
       title: "Por que mais MBAs deveriam comprar pequenas empresas",
       source: "Harvard Business Review",
-      url: "https://hbr.org/mba-small-business-acquisition",
+      url: "https://hbr.org/2016/03/why-more-mbas-should-buy-small-businesses",
     },
     {
       title: "Jovens empreendedores migram para mini private equity enquanto o mercado de trabalho está estagnado",
       source: "Business Insider",
-      url: "https://www.businessinsider.com/young-entrepreneurs-private-equity",
+      url: "https://www.businessinsider.com/search-funds-mini-private-equity-how-to-job-market-2025-4",
     },
   ]
 
@@ -322,7 +322,7 @@ export default function GlossarioPage() {
             <CardContent>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-                  <Link href="/contato">Fale Conosco</Link>
+                  <Link href="/#contato">Fale Conosco</Link>
                 </Button>
                 <Button
                   asChild
@@ -350,7 +350,7 @@ export default function GlossarioPage() {
                 <span className="text-xl font-bold">Go Live Capital</span>
               </div>
               <p className="text-muted-foreground text-sm mb-4">Resultados preparam novos ciclos</p>
-              <p className="text-muted-foreground text-sm">www.golivecap.com.br</p>
+              <p className="text-muted-foreground text-sm">www.golive.capital</p>
             </div>
             <div>
               <h3 className="font-semibold mb-4">Endereço</h3>
@@ -385,7 +385,7 @@ export default function GlossarioPage() {
             </div>
           </div>
           <div className="border-t border-border mt-8 pt-8 text-center">
-            <p className="text-muted-foreground text-sm">© 2024 Go Live Capital. Todos os direitos reservados.</p>
+            <p className="text-muted-foreground text-sm">© 2025 Go Live Capital. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>
