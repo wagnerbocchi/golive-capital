@@ -858,13 +858,7 @@ export default function HomePage() {
                   className="block text-muted-foreground text-sm hover:text-foreground transition-colors"
                 >
                   Teses de Investimento
-                </a>
-                <a
-                  href="#valores"
-                  className="block text-muted-foreground text-sm hover:text-foreground transition-colors"
-                >
-                  Missão e Valores
-                </a>
+                </a>                
                 <a
                   href="#glossario"
                   className="block text-muted-foreground text-sm hover:text-foreground transition-colors"
