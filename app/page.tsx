@@ -316,21 +316,21 @@ export default function HomePage() {
               </CardHeader>
               <CardContent className="space-y-3">
                 <p className="text-sm text-muted-foreground text-center">
-                  Empreendedor serial com vasta experiência em M&A
+                  Empreendedor e executivo com mais de 20 anos de experiência, principalmente em tecnologia.
                 </p>
 
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2">
                     <Briefcase className="h-3 w-3 text-primary flex-shrink-0" />
-                    <span className="text-xs text-muted-foreground">Co-fundador Tray & Pagamento Digital</span>
+                    <span className="text-xs text-muted-foreground">Co-fundador Tray & Pagamento Digital & VP Nuvini</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Award className="h-3 w-3 text-primary flex-shrink-0" />
-                    <span className="text-xs text-muted-foreground">7 anos experiência M&A</span>
+                    <span className="text-xs text-muted-foreground">Abriu capital da Nuvini na Nasdaq 2023</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <TrendingUp className="h-3 w-3 text-primary flex-shrink-0" />
-                    <span className="text-xs text-muted-foreground">Investidor anjo ativo</span>
+                    <span className="text-xs text-muted-foreground">Merge & Acquisitions</span>
                   </div>
                 </div>
               </CardContent>
@@ -343,7 +343,7 @@ export default function HomePage() {
                   <img src="/images/gustavo.png" alt="Gustavo Rinaldi" className="w-full h-full object-cover" />
                 </div>
                 <CardTitle className="text-lg">Gustavo Rinaldi</CardTitle>
-                <CardDescription className="text-primary font-medium">Partner at Go Live Capital</CardDescription>
+                <CardDescription className="text-primary font-medium">Sócio</CardDescription>
                 <a
                   href="https://www.linkedin.com/in/gustavo-rinaldi-85285384/"
                   target="_blank"
@@ -354,20 +354,20 @@ export default function HomePage() {
                 </a>
               </CardHeader>
               <CardContent className="space-y-3">
-                <p className="text-sm text-muted-foreground text-center">Descrição da experiência profissional</p>
+                <p className="text-sm text-muted-foreground text-center"> Parceiro na Go Live Capital</p>
 
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2">
                     <Briefcase className="h-3 w-3 text-primary flex-shrink-0" />
-                    <span className="text-xs text-muted-foreground">Experiência anterior</span>
+                    <span className="text-xs text-muted-foreground">Parceiro e VP Acorn Advisory</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Award className="h-3 w-3 text-primary flex-shrink-0" />
-                    <span className="text-xs text-muted-foreground">Especialização</span>
+                    <span className="text-xs text-muted-foreground">Private Equity e Venture Capital</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <TrendingUp className="h-3 w-3 text-primary flex-shrink-0" />
-                    <span className="text-xs text-muted-foreground">Conquistas relevantes</span>
+                    <span className="text-xs text-muted-foreground">MBA em Marketing e Business Digital Intelligence</span>
                   </div>
                 </div>
               </CardContent>
@@ -380,7 +380,7 @@ export default function HomePage() {
                   <img src="/images/joao.png" alt="João Paulo Matos" className="w-full h-full object-cover" />
                 </div>
                 <CardTitle className="text-lg">João Paulo Matos</CardTitle>
-                <CardDescription className="text-primary font-medium">Cargo/Função</CardDescription>
+                <CardDescription className="text-primary font-medium">Estagiário M&A</CardDescription>
                 <a
                   href="https://www.linkedin.com/in/joaopaulomatosmelo/"
                   target="_blank"
@@ -391,7 +391,7 @@ export default function HomePage() {
                 </a>
               </CardHeader>
               <CardContent className="space-y-3">
-                <p className="text-sm text-muted-foreground text-center">Descrição da experiência profissional</p>
+                <p className="text-sm text-muted-foreground text-center">Mergers and Acquisitions Go Live Capital</p>
 
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2">
@@ -400,11 +400,11 @@ export default function HomePage() {
                   </div>
                   <div className="flex items-center space-x-2">
                     <Award className="h-3 w-3 text-primary flex-shrink-0" />
-                    <span className="text-xs text-muted-foreground">Especialização</span>
+                    <span className="text-xs text-muted-foreground">Bacharelando em Economia USP</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <TrendingUp className="h-3 w-3 text-primary flex-shrink-0" />
-                    <span className="text-xs text-muted-foreground">Conquistas relevantes</span>
+                    <span className="text-xs text-muted-foreground">FIDC na WNT Gestora</span>
                   </div>
                 </div>
               </CardContent>
@@ -417,7 +417,7 @@ export default function HomePage() {
                   <img src="/images/wagner.png" alt="Wagner Bocchi" className="w-full h-full object-cover" />
                 </div>
                 <CardTitle className="text-lg">Wagner Bocchi</CardTitle>
-                <CardDescription className="text-primary font-medium">Cargo/Função</CardDescription>
+                <CardDescription className="text-primary font-medium">Desenvolvedor e Especialista em TI</CardDescription>
                 <a
                   href="https://linkedin.com/in/wagner-bocchi/"
                   target="_blank"
@@ -428,20 +428,20 @@ export default function HomePage() {
                 </a>
               </CardHeader>
               <CardContent className="space-y-3">
-                <p className="text-sm text-muted-foreground text-center">Descrição da experiência profissional</p>
+                <p className="text-sm text-muted-foreground text-center">Especialista em desenvolvimento de software e cibersegurança</p>
 
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2">
                     <Briefcase className="h-3 w-3 text-primary flex-shrink-0" />
-                    <span className="text-xs text-muted-foreground">Experiência anterior</span>
+                    <span className="text-xs text-muted-foreground">Penetration Tester Smart Services Solutions</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Award className="h-3 w-3 text-primary flex-shrink-0" />
-                    <span className="text-xs text-muted-foreground">Especialização</span>
+                    <span className="text-xs text-muted-foreground">Cybersecurity</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <TrendingUp className="h-3 w-3 text-primary flex-shrink-0" />
-                    <span className="text-xs text-muted-foreground">Conquistas relevantes</span>
+                    <span className="text-xs text-muted-foreground">Certified Ethical Hacker by CISCO</span>
                   </div>
                 </div>
               </CardContent>
@@ -585,7 +585,7 @@ export default function HomePage() {
       </section>
 
             {/* Contact Form & Info */}
-      <section className="py-16 px-4">
+      <section id="contato" className="py-16 px-4">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
