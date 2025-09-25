@@ -742,7 +742,7 @@ export default function HomePage() {
                     <Mail className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-semibold mb-1">Email</h3>
-                      <p className="text-sm text-muted-foreground">contato@golivecap.com.br</p>
+                      <p className="text-sm text-muted-foreground">contato@golive.capital</p>
                     </div>
                   </div>
 
@@ -819,30 +819,43 @@ export default function HomePage() {
       {/* Footer */}
       <footer className="py-12 px-4 border-t border-border">
         <div className="container mx-auto">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div>
+          <div className="grid md:grid-cols-4 gap-8">
+            <div className="md:col-span-2">
               <div className="flex items-center space-x-2 mb-4">
                 <Image
                   src="/images/golive-logo.jpg"
                   alt="GoLive Capital"
-                  width={100}
-                  height={32}
-                  className="h-8 w-auto"
+                  width={120}
+                  height={40}
+                  className="h-10 w-auto"
                 />
               </div>
-              <p className="text-muted-foreground text-sm mb-4">Resultados preparam novos ciclos</p>
-              <p className="text-muted-foreground text-sm">www.golive.capital</p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Endereço</h3>
-              <p className="text-muted-foreground text-sm">
-                Rua Tabapuã 500 - Itaim Bibi
-                <br />
-                São Paulo - SP, 04533-001
+              <p className="text-muted-foreground text-sm mb-4">
+                Empresa de investimentos que opera no modelo Sênior Search Fund, focada em empresas de tecnologia,
+                software e serviços com receita recorrente.
               </p>
+              <p className="text-muted-foreground text-sm font-medium">Resultados preparam novos ciclos</p>
             </div>
+
             <div>
-              <h3 className="font-semibold mb-4">Links Úteis</h3>
+              <h3 className="font-semibold mb-4">Contato</h3>
+              <div className="space-y-2 text-sm text-muted-foreground">
+                <p>contato@golive.capital</p>
+                <p>+55 (11) 3000-0000</p>
+                <p>www.golive.capital</p>
+              </div>
+              <div className="mt-4">
+                <h4 className="font-semibold mb-2 text-sm">Endereço</h4>
+                <p className="text-muted-foreground text-sm">
+                  Rua Tabapuã 500 - Itaim Bibi
+                  <br />
+                  São Paulo - SP, 04533-001
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-4">Navegação</h3>
               <div className="space-y-2">
                 <a
                   href="#sobre"
@@ -852,7 +865,13 @@ export default function HomePage() {
                 </a>
                 <a href="#time" className="block text-muted-foreground text-sm hover:text-foreground transition-colors">
                   Nosso Time
-                </a>                
+                </a>
+                <a
+                  href="#teses"
+                  className="block text-muted-foreground text-sm hover:text-foreground transition-colors"
+                >
+                  Teses de Investimento
+                </a>
                 <a
                   href="#glossario"
                   className="block text-muted-foreground text-sm hover:text-foreground transition-colors"
@@ -868,11 +887,12 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+
           <div className="border-t border-border mt-8 pt-8 text-center">
             <p className="text-muted-foreground text-sm">© 2025 Go Live Capital. Todos os direitos reservados.</p>
           </div>
         </div>
-        </footer>
+      </footer>
     </div>
   )
 }

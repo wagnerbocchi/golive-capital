@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { ArrowLeft, BookOpen, GraduationCap, Newspaper, ExternalLink } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function GlossarioPage() {
   const searchFundBasics = [
@@ -118,35 +119,35 @@ export default function GlossarioPage() {
       <header className="border-b border-border bg-card">
         <div className="container mx-auto px-4 py-4">
           <nav className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <Link
-                href="/"
-                className="flex items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <ArrowLeft className="h-4 w-4" />
-                <span>Voltar</span>
-              </Link>
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold text-sm">GL</span>
-                </div>
-                <span className="text-xl font-bold text-foreground">Go Live Capital</span>
-              </div>
+            <div className="flex items-center space-x-2">
+              <Image
+                src="/images/golive-logo.jpg"
+                alt="GoLive Capital"
+                width={120}
+                height={40}
+                className="h-10 w-auto"
+              />
             </div>
             <div className="hidden md:flex items-center space-x-6">
-              <Link href="/#sobre" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a href="#sobre" className="text-muted-foreground hover:text-foreground transition-colors">
                 Sobre
-              </Link>
-              <Link href="/#teses" className="text-muted-foreground hover:text-foreground transition-colors">
+              </a>
+              <a href="#time" className="text-muted-foreground hover:text-foreground transition-colors">
+                Time
+              </a>
+              <a href="#teses" className="text-muted-foreground hover:text-foreground transition-colors">
                 Teses
-              </Link>
-              <Link href="/glossario" className="text-muted-foreground hover:text-foreground transition-colors">
+              </a>
+              <a href="#glossario" className="text-muted-foreground hover:text-foreground transition-colors">
                 Glossário
-              </Link>
+              </a>
+              <a
+                href="#contato"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md transition-colors"
+              >
+                Contato
+              </a>
             </div>
-            <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-              <Link href="/contato">Contato</Link>
-            </Button>
           </nav>
         </div>
       </header>
@@ -341,49 +342,75 @@ export default function GlossarioPage() {
       {/* Footer */}
       <footer className="py-12 px-4 border-t border-border">
         <div className="container mx-auto">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div>
+          <div className="grid md:grid-cols-4 gap-8">
+            <div className="md:col-span-2">
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold text-sm">GL</span>
-                </div>
-                <span className="text-xl font-bold">Go Live Capital</span>
+                <Image
+                  src="/images/golive-logo.jpg"
+                  alt="GoLive Capital"
+                  width={120}
+                  height={40}
+                  className="h-10 w-auto"
+                />
               </div>
-              <p className="text-muted-foreground text-sm mb-4">Resultados preparam novos ciclos</p>
-              <p className="text-muted-foreground text-sm">www.golive.capital</p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Endereço</h3>
-              <p className="text-muted-foreground text-sm">
-                Rua Tabapuã 500 - Itaim Bibi
-                <br />
-                São Paulo - SP, 04533-001
+              <p className="text-muted-foreground text-sm mb-4">
+                Empresa de investimentos que opera no modelo Sênior Search Fund, focada em empresas de tecnologia,
+                software e serviços com receita recorrente.
               </p>
+              <p className="text-muted-foreground text-sm font-medium">Resultados preparam novos ciclos</p>
             </div>
+
             <div>
-              <h3 className="font-semibold mb-4">Links Úteis</h3>
+              <h3 className="font-semibold mb-4">Contato</h3>
+              <div className="space-y-2 text-sm text-muted-foreground">
+                <p>contato@golive.capital</p>
+                <p>+55 (11) 3000-0000</p>
+                <p>www.golive.capital</p>
+              </div>
+              <div className="mt-4">
+                <h4 className="font-semibold mb-2 text-sm">Endereço</h4>
+                <p className="text-muted-foreground text-sm">
+                  Rua Tabapuã 500 - Itaim Bibi
+                  <br />
+                  São Paulo - SP, 04533-001
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-4">Navegação</h3>
               <div className="space-y-2">
-                <Link
-                  href="/#sobre"
+                <a
+                  href="#sobre"
                   className="block text-muted-foreground text-sm hover:text-foreground transition-colors"
                 >
                   Sobre a Empresa
-                </Link>
-                <Link
-                  href="/#teses"
+                </a>
+                <a href="#time" className="block text-muted-foreground text-sm hover:text-foreground transition-colors">
+                  Nosso Time
+                </a>
+                <a
+                  href="#teses"
                   className="block text-muted-foreground text-sm hover:text-foreground transition-colors"
                 >
                   Teses de Investimento
-                </Link>
-                <Link
-                  href="/#valores"
+                </a>
+                <a
+                  href="#glossario"
                   className="block text-muted-foreground text-sm hover:text-foreground transition-colors"
                 >
-                  Missão e Valores
-                </Link>
+                  Glossário
+                </a>
+                <a
+                  href="#contato"
+                  className="block text-muted-foreground text-sm hover:text-foreground transition-colors"
+                >
+                  Contato
+                </a>
               </div>
             </div>
           </div>
+
           <div className="border-t border-border mt-8 pt-8 text-center">
             <p className="text-muted-foreground text-sm">© 2025 Go Live Capital. Todos os direitos reservados.</p>
           </div>
