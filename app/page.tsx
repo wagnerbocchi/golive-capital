@@ -40,29 +40,48 @@ export default function HomePage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+      if (!response.ok) {
+        // Se a resposta não for bem-sucedida, lança um erro
+        throw new Error('Falha ao enviar a mensagem.');
+      }
 
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false)
-      setFormData({
-        nome: "",
-        empresa: "",
-        email: "",
-        telefone: "",
-        assunto: "",
-        mensagem: "",
-      })
-    }, 3000)
-  }
+      // Se a resposta for bem-sucedida
+      setIsSubmitted(true);
+      // Limpa o formulário após 3 segundos
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          nome: "",
+          empresa: "",
+          email: "",
+          telefone: "",
+          assunto: "",
+          mensagem: "",
+        });
+      }, 3000);
+
+    } catch (error) {
+      console.error(error);
+      // Aqui você pode adicionar um estado para exibir uma mensagem de erro ao usuário
+      alert("Ocorreu um erro. Tente novamente mais tarde.");
+    } finally {
+      // Garante que o estado de submissão seja falso ao final, independentemente do resultado
+      setIsSubmitting(false);
+    }
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target
