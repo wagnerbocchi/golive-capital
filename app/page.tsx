@@ -565,44 +565,6 @@ const handleSubmit = async (e: React.FormEvent) => {
         </div>
       </section>
       
-      {/* Call to Action */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto text-center">
-          <Card className="bg-card border-border max-w-2xl mx-auto">
-            <CardHeader>
-              <CardTitle className="text-2xl">Tem uma empresa para vender?</CardTitle>
-              <CardDescription>
-                Verificamos se sua empresa se encaixa no nosso perfil de investimento.
-
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-                <CardContent>
-                  <div className="space-y-3 text-sm">
-                    <div className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      <span>Receita recorrente (SaaS/Fintech)</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      <span>Geração de caixa positivo</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      <span>Potencial de crescimento</span>
-                    </div>
-                  </div>
-                </CardContent>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-                  Agendar Reunião
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
             {/* Contact Form & Info */}
       <section id="contato" className="py-16 px-4">
         <div className="container mx-auto">
@@ -807,6 +769,44 @@ const handleSubmit = async (e: React.FormEvent) => {
               </Card>
             </div>
           </div>
+        </div>
+      </section>
+      
+            {/* Call to Action */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto text-center">
+          <Card className="bg-card border-border max-w-2xl mx-auto">
+            <CardHeader>
+              <CardTitle className="text-2xl">Quer apresentar a sua empresa e receber uma avaliação gratuita?</CardTitle>
+              <CardDescription>
+                Verificamos se sua empresa se encaixa no nosso perfil de investimento.
+
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+                <CardContent>
+                  <div className="space-y-3 text-sm">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span>Receita recorrente (SaaS/Fintech)</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span>Geração de caixa positivo</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span>Potencial de crescimento</span>
+                    </div>
+                  </div>
+                </CardContent>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+                  Agendar Reunião
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
