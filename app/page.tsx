@@ -594,8 +594,10 @@ const handleSubmit = async (e: React.FormEvent) => {
                   </div>
                 </CardContent>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+                <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
+                  <Link href="https://calendar.app.google/HVHk21TE2HNE3JcJ9" target="_blank" rel="noopener noreferrer">
                   Agendar Reunião
+                  </Link>
                 </Button>
               </div>
             </CardContent>
@@ -769,7 +771,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                     <Phone className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-semibold mb-1">Telefone</h3>
-                      <p className="text-sm text-muted-foreground">+55 (11) 3000-0000</p>
+                      <p className="text-sm text-muted-foreground"> </p>
                     </div>
                   </div>
 
@@ -859,8 +861,7 @@ const handleSubmit = async (e: React.FormEvent) => {
             <div>
               <h3 className="font-semibold mb-4">Contato</h3>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <p>contato@golive.capital</p>
-                <p>+55 (11) 3000-0000</p>
+                <p>contato@golive.capital</p>              
                 <p>www.golive.capital</p>
               </div>
               <div className="mt-4">
