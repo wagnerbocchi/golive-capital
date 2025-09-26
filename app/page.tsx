@@ -99,7 +99,7 @@ const handleSubmit = async (e: React.FormEvent) => {
           <nav className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <Image
-                src="/images/golive-logo.jpg"
+                src="/images/golive-logo.png"
                 alt="GoLive Capital"
                 width={120}
                 height={40}
@@ -842,7 +842,7 @@ const handleSubmit = async (e: React.FormEvent) => {
             <div className="md:col-span-2">
               <div className="flex items-center space-x-2 mb-4">
                 <Image
-                  src="/images/golive-logo.jpg"
+                  src="/images/golive-logo.png"
                   alt="GoLive Capital"
                   width={120}
                   height={40}
