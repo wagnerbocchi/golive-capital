@@ -101,9 +101,9 @@ const handleSubmit = async (e: React.FormEvent) => {
               <Image
                 src="/images/golive_capital_vect.svg"
                 alt="GoLive Capital"
-                width={120}
-                height={40}
-                className="h-10 w-auto"
+                width={240}
+                height={80}
+                className="h-16 w-auto"
               />
             </div>
             <div className="hidden md:flex items-center space-x-6">
@@ -399,7 +399,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                   <img src="/images/joao.png" alt="João Paulo Matos" className="w-full h-full object-cover" />
                 </div>
                 <CardTitle className="text-lg">João Paulo Matos</CardTitle>
-                <CardDescription className="text-primary font-medium">Estagiário M&A</CardDescription>
+                <CardDescription className="text-primary font-medium">Analista M&A</CardDescription>
                 <a
                   href="https://www.linkedin.com/in/joaopaulomatosmelo/"
                   target="_blank"
@@ -436,7 +436,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                   <img src="/images/wagner.png" alt="Wagner Bocchi" className="w-full h-full object-cover" />
                 </div>
                 <CardTitle className="text-lg">Wagner Bocchi</CardTitle>
-                <CardDescription className="text-primary font-medium">Desenvolvedor e Especialista em TI</CardDescription>
+                <CardDescription className="text-primary font-medium">Especialista em TI</CardDescription>
                 <a
                   href="https://linkedin.com/in/wagner-bocchi/"
                   target="_blank"
@@ -844,9 +844,9 @@ const handleSubmit = async (e: React.FormEvent) => {
                 <Image
                   src="/images/golive_capital_vect.svg"
                   alt="GoLive Capital"
-                  width={120}
-                  height={40}
-                  className="h-10 w-auto"
+                  width={240}
+                  height={80}
+                  className="h-16 w-auto"
                 />
               </div>
               <p className="text-muted-foreground text-sm mb-4">
