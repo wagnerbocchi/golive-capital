@@ -17,6 +17,7 @@ import {
   CheckCircle,
 } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 export default function HomePage() {
   const [formData, setFormData] = useState({
@@ -87,7 +88,7 @@ const handleSubmit = async (e: React.FormEvent) => {
       <header className="border-b border-border bg-card">
         <div className="container mx-auto px-4 py-4">
           <nav className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
+            <Link href="/" className="flex items-center space-x-2">
               <Image
                 src="/images/golive_capital_vect.svg"
                 alt="GoLive Capital"
@@ -95,18 +96,18 @@ const handleSubmit = async (e: React.FormEvent) => {
                 height={80}
                 className="h-16 w-auto"
               />
-            </div>
+            </Link>
             <div className="hidden md:flex items-center space-x-6">
-              <a href="#sobre" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a href="/#sobre" className="text-muted-foreground hover:text-foreground transition-colors">
                 Sobre
               </a>
-              <a href="#time" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a href="/#time" className="text-muted-foreground hover:text-foreground transition-colors">
                 Time
               </a>
-              <a href="#teses" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a href="/#teses" className="text-muted-foreground hover:text-foreground transition-colors">
                 Teses
               </a>
-              <a href="#glossario" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a href="/glossario" className="text-muted-foreground hover:text-foreground transition-colors">
                 Glossário
               </a>
               <a
@@ -375,7 +376,7 @@ const handleSubmit = async (e: React.FormEvent) => {
         <div className="container mx-auto">
           <div className="grid md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
-              <div className="flex items-center space-x-2 mb-4">
+              <Link href="/" className="flex items-center space-x-2 mb-4">
                 <Image
                   src="/images/golive_capital_vect.svg"
                   alt="GoLive Capital"
@@ -383,7 +384,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                   height={80}
                   className="h-16 w-auto"
                 />
-              </div>
+              </Link>
               <p className="text-muted-foreground text-sm mb-4">
                 Empresa de investimentos que opera no modelo Sênior Search Fund, focada em empresas de tecnologia,
                 software e serviços com receita recorrente.

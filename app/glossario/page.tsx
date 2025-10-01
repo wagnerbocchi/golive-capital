@@ -119,30 +119,30 @@ export default function GlossarioPage() {
       <header className="border-b border-border bg-card">
         <div className="container mx-auto px-4 py-4">
           <nav className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
+            <Link href="/" className="flex items-center space-x-2">
               <Image
                 src="/images/golive_capital_vect.svg"
                 alt="GoLive Capital"
-                width={120}
-                height={40}
-                className="h-10 w-auto"
+                width={240}
+                height={80}
+                className="h-16 w-auto"
               />
-            </div>
+            </Link>
             <div className="hidden md:flex items-center space-x-6">
-              <a href="#sobre" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a href="/#sobre" className="text-muted-foreground hover:text-foreground transition-colors">
                 Sobre
               </a>
-              <a href="#time" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a href="/#time" className="text-muted-foreground hover:text-foreground transition-colors">
                 Time
               </a>
-              <a href="#teses" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a href="/#teses" className="text-muted-foreground hover:text-foreground transition-colors">
                 Teses
               </a>
-              <a href="#glossario" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a href="/glossario" className="text-muted-foreground hover:text-foreground transition-colors">
                 Glossário
               </a>
               <a
-                href="#contato"
+                href="/contato"
                 className="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md transition-colors"
               >
                 Contato
@@ -339,20 +339,20 @@ export default function GlossarioPage() {
         </div>
       </section>
 
-      {/* Footer */}
+       {/* Footer */}
       <footer className="py-12 px-4 border-t border-border">
         <div className="container mx-auto">
           <div className="grid md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
-              <div className="flex items-center space-x-2 mb-4">
+              <Link href="/" className="flex items-center space-x-2 mb-4">
                 <Image
                   src="/images/golive_capital_vect.svg"
                   alt="GoLive Capital"
-                  width={120}
-                  height={40}
-                  className="h-10 w-auto"
+                  width={240}
+                  height={80}
+                  className="h-16 w-auto"
                 />
-              </div>
+              </Link>
               <p className="text-muted-foreground text-sm mb-4">
                 Empresa de investimentos que opera no modelo Sênior Search Fund, focada em empresas de tecnologia,
                 software e serviços com receita recorrente.
@@ -363,8 +363,7 @@ export default function GlossarioPage() {
             <div>
               <h3 className="font-semibold mb-4">Contato</h3>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <p>contato@golive.capital</p>
-                <p>+55 (11) 3000-0000</p>
+                <p>contato@golive.capital</p>              
                 <p>www.golive.capital</p>
               </div>
               <div className="mt-4">
