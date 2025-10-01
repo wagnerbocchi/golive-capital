@@ -97,7 +97,7 @@ const handleSubmit = async (e: React.FormEvent) => {
       <header className="border-b border-border bg-card">
         <div className="container mx-auto px-4 py-4">
           <nav className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
+            <Link href="/" className="flex items-center space-x-2">
               <Image
                 src="/images/golive_capital_vect.svg"
                 alt="GoLive Capital"
@@ -105,7 +105,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 height={80}
                 className="h-16 w-auto"
               />
-            </div>
+            </Link>
             <div className="hidden md:flex items-center space-x-6">
               <a href="#sobre" className="text-muted-foreground hover:text-foreground transition-colors">
                 Sobre
@@ -141,12 +141,6 @@ const handleSubmit = async (e: React.FormEvent) => {
             de tecnologia, software e serviços com receita recorrente e potencial de crescimento.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-              <Link href="#contato">
-                Conheça nossa estratégia
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
           </div>
         </div>
       </section>
@@ -334,9 +328,6 @@ const handleSubmit = async (e: React.FormEvent) => {
                 </a>
               </CardHeader>
               <CardContent className="space-y-3">
-                <p className="text-sm text-muted-foreground text-center">
-                  Empreendedor e executivo com mais de 20 anos de experiência, principalmente em tecnologia.
-                </p>
 
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2">
@@ -373,8 +364,6 @@ const handleSubmit = async (e: React.FormEvent) => {
                 </a>
               </CardHeader>
               <CardContent className="space-y-3">
-                <p className="text-sm text-muted-foreground text-center"> Parceiro na Go Live Capital</p>
-
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2">
                     <Briefcase className="h-3 w-3 text-primary flex-shrink-0" />
@@ -410,7 +399,6 @@ const handleSubmit = async (e: React.FormEvent) => {
                 </a>
               </CardHeader>
               <CardContent className="space-y-3">
-                <p className="text-sm text-muted-foreground text-center">Mergers and Acquisitions Go Live Capital</p>
 
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2">
@@ -447,7 +435,6 @@ const handleSubmit = async (e: React.FormEvent) => {
                 </a>
               </CardHeader>
               <CardContent className="space-y-3">
-                <p className="text-sm text-muted-foreground text-center">Especialista em desenvolvimento de software e cibersegurança</p>
 
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2">
@@ -512,6 +499,47 @@ const handleSubmit = async (e: React.FormEvent) => {
         </div>
       </section>
 
+      {/* Call to Action */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto text-center">
+          <Card className="bg-card border-border max-w-2xl mx-auto">
+            <CardHeader>
+              <CardTitle className="text-2xl">Quer apresentar a sua empresa e receber uma avaliação gratuita?</CardTitle>
+              <CardDescription>
+                Verificamos se sua empresa se encaixa no nosso perfil de investimento.
+
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+                <CardContent>
+                  <div className="space-y-3 text-sm">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span>Receita recorrente (SaaS/Fintech)</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span>Geração de caixa positivo</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span>Potencial de crescimento</span>
+                    </div>
+                  </div>
+                </CardContent>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+                  <Link href="/contato" target="_blank" rel="noopener noreferrer">
+                    Agendar Reunião
+                  </Link>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+
       {/* Glossary Preview Section */}
       <section id="glossario" className="py-16 px-4">
         <div className="container mx-auto">
@@ -565,282 +593,12 @@ const handleSubmit = async (e: React.FormEvent) => {
         </div>
       </section>
       
-            {/* Contact Form & Info */}
-      <section id="contato" className="py-16 px-4">
-        <div className="container mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <div>
-              <Card className="bg-card border-border">
-                <CardHeader>
-                  <CardTitle className="text-2xl">Envie sua mensagem</CardTitle>
-                  <CardDescription>Preencha o formulário abaixo e entraremos em contato em breve</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <label htmlFor="nome" className="text-sm font-medium">
-                          Nome *
-                        </label>
-                        <Input
-                          id="nome"
-                          placeholder="Seu nome completo"
-                          className="bg-background border-border"
-                          value={formData.nome}
-                          onChange={handleInputChange}
-                          required
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <label htmlFor="empresa" className="text-sm font-medium">
-                          Empresa
-                        </label>
-                        <Input
-                          id="empresa"
-                          placeholder="Nome da empresa"
-                          className="bg-background border-border"
-                          value={formData.empresa}
-                          onChange={handleInputChange}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <label htmlFor="email" className="text-sm font-medium">
-                          Email *
-                        </label>
-                        <Input
-                          id="email"
-                          type="email"
-                          placeholder="seu@email.com"
-                          className="bg-background border-border"
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          required
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <label htmlFor="telefone" className="text-sm font-medium">
-                          Telefone
-                        </label>
-                        <Input
-                          id="telefone"
-                          placeholder="(11) 99999-9999"
-                          className="bg-background border-border"
-                          value={formData.telefone}
-                          onChange={handleInputChange}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <label htmlFor="assunto" className="text-sm font-medium">
-                        Assunto *
-                      </label>
-                      <Input
-                        id="assunto"
-                        placeholder="Sobre o que gostaria de falar?"
-                        className="bg-background border-border"
-                        value={formData.assunto}
-                        onChange={handleInputChange}
-                        required
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <label htmlFor="mensagem" className="text-sm font-medium">
-                        Mensagem *
-                      </label>
-                      <Textarea
-                        id="mensagem"
-                        placeholder="Descreva sua mensagem, projeto ou oportunidade..."
-                        rows={6}
-                        className="bg-background border-border resize-none"
-                        value={formData.mensagem}
-                        onChange={handleInputChange}
-                        required
-                      />
-                    </div>
-
-                    <Button
-                      type="submit"
-                      className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
-                      disabled={isSubmitting || isSubmitted}
-                    >
-                      {isSubmitted ? (
-                        <>
-                          <CheckCircle className="mr-2 h-4 w-4" />
-                          Mensagem Enviada!
-                        </>
-                      ) : isSubmitting ? (
-                        <>
-                          <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-primary-foreground border-t-transparent" />
-                          Enviando...
-                        </>
-                      ) : (
-                        <>
-                          <Send className="mr-2 h-4 w-4" />
-                          Enviar Mensagem
-                        </>
-                      )}
-                    </Button>
-                  </form>
-
-                  <p className="text-xs text-muted-foreground">
-                    * Campos obrigatórios. Seus dados serão tratados com confidencialidade.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Contact Information */}
-            <div className="space-y-6">
-              <Card className="bg-card border-border">
-                <CardHeader>
-                  <CardTitle className="text-xl flex items-center">
-                    <Building2 className="mr-3 h-5 w-5 text-primary" />
-                    Informações de Contato
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="flex items-start space-x-3">
-                    <MapPin className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold mb-1">Endereço</h3>
-                      <p className="text-sm text-muted-foreground">
-                        Rua Tabapuã 500 - Itaim Bibi
-                        <br />
-                        São Paulo - SP, 04533-001
-                        <br />
-                        Brasil
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start space-x-3">
-                    <Mail className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold mb-1">Email</h3>
-                      <p className="text-sm text-muted-foreground">contato@golive.capital</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start space-x-3">
-                    <Phone className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold mb-1">Telefone</h3>
-                      <p className="text-sm text-muted-foreground"> </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start space-x-3">
-                    <Clock className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold mb-1">Horário de Atendimento</h3>
-                      <p className="text-sm text-muted-foreground">
-                        Segunda a Sexta: 9h às 18h
-                        <br />
-                        Sábado e Domingo: Fechado
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-card border-border">
-                <CardHeader>
-                  <CardTitle className="text-xl">Website</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <a
-                      href="https://www.golive.capital"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary hover:text-primary/80 transition-colors"
-                    >
-                      www.golive.capital
-                    </a>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-            {/* Call to Action */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto text-center">
-          <Card className="bg-card border-border max-w-2xl mx-auto">
-            <CardHeader>
-              <CardTitle className="text-2xl">Quer apresentar a sua empresa e receber uma avaliação gratuita?</CardTitle>
-              <CardDescription>
-                Verificamos se sua empresa se encaixa no nosso perfil de investimento.
-
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-                <CardContent>
-                  <div className="space-y-3 text-sm">
-                    <div className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      <span>Receita recorrente (SaaS/Fintech)</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      <span>Geração de caixa positivo</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      <span>Potencial de crescimento</span>
-                    </div>
-                  </div>
-                </CardContent>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-                  Agendar Reunião
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Map Section */}
-      <section className="py-16 px-4 bg-card">
-        <div className="container mx-auto">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold mb-4">Nossa Localização</h2>
-            <p className="text-muted-foreground">Estamos localizados no coração financeiro de São Paulo</p>
-          </div>
-
-          <Card className="bg-background border-border overflow-hidden">
-            <div className="aspect-video">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.7234567890123!2d-46.6784567!3d-23.5678901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5a2b2ed7f3a7%3A0x8b8b8b8b8b8b8b8b!2sRua%20Tabapuã%2C%20500%20-%20Itaim%20Bibi%2C%20São%20Paulo%20-%20SP%2C%2004533-001!5e0!3m2!1spt-BR!2sbr!4v1234567890123!5m2!1spt-BR!2sbr"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Localização Go Live Capital - Rua Tabapuã 500, Itaim Bibi, São Paulo"
-              />
-            </div>
-          </Card>
-        </div>
-      </section>
-
       {/* Footer */}
       <footer className="py-12 px-4 border-t border-border">
         <div className="container mx-auto">
           <div className="grid md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
-              <div className="flex items-center space-x-2 mb-4">
+              <Link href="/" className="flex items-center space-x-2 mb-4">
                 <Image
                   src="/images/golive_capital_vect.svg"
                   alt="GoLive Capital"
@@ -848,7 +606,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                   height={80}
                   className="h-16 w-auto"
                 />
-              </div>
+              </Link>
               <p className="text-muted-foreground text-sm mb-4">
                 Empresa de investimentos que opera no modelo Sênior Search Fund, focada em empresas de tecnologia,
                 software e serviços com receita recorrente.
