@@ -18,7 +18,7 @@ export async function POST(request: Request) {
     // Envia o e-mail usando o Resend
     const { data, error } = await resend.emails.send({
       from: 'GoLive Capital Forms <forms@golive.capital>', // Use um e-mail do seu domínio verificado
-      to: ['comercial@golive.capital'], // O e-mail de destino
+      to: ['contato@golive.capital'], // O e-mail de destino
       subject: `Nova mensagem de contato: ${assunto}`,
       replyTo: email, // Define o e-mail do remetente como o endereço para resposta
       html: `
