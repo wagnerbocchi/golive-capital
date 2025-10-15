@@ -500,18 +500,17 @@ const handleSubmit = async (e: React.FormEvent) => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 px-4">
+      <section id="call-to-action" className="py-16 px-4">
         <div className="container mx-auto text-center">
-          <Card className="bg-card border-border max-w-2xl mx-auto">
+          <Card className="bg-card border-border max-w-4xl mx-auto">
             <CardHeader>
-              <CardTitle className="text-2xl">Quer apresentar a sua empresa e receber uma avaliação gratuita?</CardTitle>
+              <CardTitle className="text-3xl font-bold mb-4 tracking-tight"
+              >Quer apresentar a sua empresa e receber uma avaliação gratuita?</CardTitle>
               <CardDescription>
                 Verificamos se sua empresa se encaixa no nosso perfil de investimento.
-
               </CardDescription>
             </CardHeader>
             <CardContent>
-                <CardContent>
                   <div className="space-y-3 text-sm">
                     <div className="flex items-center space-x-2">
                       <div className="w-2 h-2 bg-primary rounded-full"></div>
@@ -526,10 +525,9 @@ const handleSubmit = async (e: React.FormEvent) => {
                       <span>Potencial de crescimento</span>
                     </div>
                   </div>
-                </CardContent>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-                  <Link href="/contato" target="_blank" rel="noopener noreferrer">
+                <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 ">
+                  <Link href="https://calendly.com/wagner-golive/go-live-capital?month=2025-10" target="_self" rel="noopener noreferrer">
                     Agendar Reunião
                   </Link>
                 </Button>

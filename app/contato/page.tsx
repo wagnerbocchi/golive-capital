@@ -136,10 +136,10 @@ const handleSubmit = async (e: React.FormEvent) => {
         </div>
       </section>
 
-            {/* Contact Form & Info */}
+      {/* Contact Form & Info */}
       <section id="contato" className="py-16 px-4">
         <div className="container mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="lg:col-span-2 max-w-2xl mx-auto w-full">
             {/* Contact Form */}
             <div>
               <Card className="bg-card border-border">
@@ -149,7 +149,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-4">
+                    <div className="lg:col-span-2 max-w-2xl mx-auto w-full">
                       <div className="space-y-2">
                         <label htmlFor="nome" className="text-sm font-medium">
                           Nome *
@@ -262,80 +262,6 @@ const handleSubmit = async (e: React.FormEvent) => {
                   <p className="text-xs text-muted-foreground">
                     * Campos obrigatórios. Seus dados serão tratados com confidencialidade.
                   </p>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Contact Information */}
-            <div className="space-y-6">
-              <Card className="bg-card border-border">
-                <CardHeader>
-                  <CardTitle className="text-xl flex items-center">
-                    <Building2 className="mr-3 h-5 w-5 text-primary" />
-                    Informações de Contato
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="flex items-start space-x-3">
-                    <MapPin className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold mb-1">Endereço</h3>
-                      <p className="text-sm text-muted-foreground">
-                        Rua Tabapuã 500 - Itaim Bibi
-                        <br />
-                        São Paulo - SP, 04533-001
-                        <br />
-                        Brasil
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start space-x-3">
-                    <Mail className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold mb-1">Email</h3>
-                      <p className="text-sm text-muted-foreground">contato@golive.capital</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start space-x-3">
-                    <Phone className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold mb-1">Telefone</h3>
-                      <p className="text-sm text-muted-foreground"> </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start space-x-3">
-                    <Clock className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold mb-1">Horário de Atendimento</h3>
-                      <p className="text-sm text-muted-foreground">
-                        Segunda a Sexta: 9h às 18h
-                        <br />
-                        Sábado e Domingo: Fechado
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-card border-border">
-                <CardHeader>
-                  <CardTitle className="text-xl">Website</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <a
-                      href="https://www.golive.capital"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary hover:text-primary/80 transition-colors"
-                    >
-                      www.golive.capital
-                    </a>
-                  </div>
                 </CardContent>
               </Card>
             </div>
