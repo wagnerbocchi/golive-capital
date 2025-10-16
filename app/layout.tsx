@@ -7,6 +7,11 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'Go Live Capital',
   description: 'Resultados preparam novos ciclos',
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon-16x16.png',
+    apple: '/apple-touch-icon.png',
+  },
   generator: '',
 }
 
