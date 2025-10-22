@@ -129,24 +129,27 @@ export default function GlossarioPage() {
               />
             </Link>
             <div className="hidden md:flex items-center space-x-6">
-              <a href="/#sobre" className="text-muted-foreground hover:text-foreground transition-colors">
+              <Link href="/#sobre" className="text-muted-foreground hover:text-foreground transition-colors">
                 Sobre
-              </a>
-              <a href="/#time" className="text-muted-foreground hover:text-foreground transition-colors">
+              </Link>
+              <Link href="/#time" className="text-muted-foreground hover:text-foreground transition-colors">
                 Time
-              </a>
-              <a href="/#teses" className="text-muted-foreground hover:text-foreground transition-colors">
+              </Link>
+              <Link href="/#teses" className="text-muted-foreground hover:text-foreground transition-colors">
                 Teses
-              </a>
-              <a href="/glossario" className="text-muted-foreground hover:text-foreground transition-colors">
+              </Link>
+              <Link href="/glossario" className="text-muted-foreground hover:text-foreground transition-colors">
                 Glossário
-              </a>
-              <a
-                href="/contato"
+              </Link>
+              <Link href="/blog" className="text-foreground font-medium">
+                Blog
+              </Link>
+              <Link
+                href="/#contato"
                 className="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md transition-colors"
               >
                 Contato
-              </a>
+              </Link>
             </div>
           </nav>
         </div>
