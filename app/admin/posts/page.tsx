@@ -176,7 +176,7 @@ export default function AdminPostsPage() {
                               <Eye className="w-4 h-4" />
                               {post.views} visualizações
                             </span>
-                            <span>{new Date(post.publishedAt).toLocaleDateString("pt-BR")}</span>
+                            <span>{post.publishedAt ? new Date(post.publishedAt).toLocaleDateString("pt-BR") : "-"}</span>
                           </div>
                         </div>
                         <span

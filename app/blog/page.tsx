@@ -178,7 +178,9 @@ export default function BlogPage() {
                       <div className="flex items-center text-muted-foreground">
                         <Calendar className="h-4 w-4 mr-2" />
                         <span className="text-xs">
-                          {new Date(post.publishedAt).toLocaleDateString("pt-BR", { dateStyle: "long" })}
+                          {post.publishedAt
+                            ? new Date(post.publishedAt).toLocaleDateString("pt-BR", { dateStyle: "long" })
+                            : "-"}
                         </span>
                       </div>
                     </div>

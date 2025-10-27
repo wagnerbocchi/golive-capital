@@ -123,3 +123,54 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Basic typography for post content */
+.article-content {
+  line-height: 1.8;
+}
+.article-content p {
+  margin-bottom: 1rem;
+  color: var(--muted-foreground);
+}
+.article-content h2 {
+  @apply text-2xl font-semibold;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+.article-content h3 {
+  @apply text-xl font-semibold;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.article-content ul {
+  @apply list-disc;
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+.article-content ol {
+  @apply list-decimal;
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+.article-content a {
+  @apply underline;
+  color: var(--primary);
+}
+.article-content blockquote {
+  @apply italic;
+  border-left: 4px solid var(--border);
+  padding-left: 1rem;
+  color: var(--muted-foreground);
+  margin: 1.5rem 0;
+}
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  margin: 1.5rem 0;
+}
+.article-content code {
+  @apply rounded;
+  background: var(--muted);
+  padding: 0.125rem 0.375rem;
+}

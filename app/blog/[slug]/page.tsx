@@ -41,7 +41,7 @@ export default async function PostPage({ params }: { params: { slug: string } })
               <Link href="/glossario" className="text-muted-foreground hover:text-foreground transition-colors">
                 Glossário
               </Link>
-              <Link href="/blog" className="text-muted-foreground hover:text-foreground transition-colors">
+              <Link href="/blog" className="text-foreground font-medium">
                 Blog
               </Link>
               <Link
@@ -79,8 +79,19 @@ export default async function PostPage({ params }: { params: { slug: string } })
               </div>
             </div>
           </header>
+          {/* Cover image */}
+          {post.imageUrl ? (
+            <div className="relative aspect-video w-full overflow-hidden rounded-lg mb-8 border border-border bg-card">
+              <img
+                src={post.imageUrl}
+                alt={post.title}
+                className="h-full w-full object-cover"
+                loading="eager"
+              />
+            </div>
+          ) : null}
           <div
-            className="prose prose-invert prose-lg max-w-none"
+            className="article-content text-base md:text-lg leading-8"
             dangerouslySetInnerHTML={{ __html: (post.content || "").replace(/\n/g, "<br />") }}
           />
         </article>

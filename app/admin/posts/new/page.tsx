@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useRouter } from "next/navigation"
 import { useSession, signOut } from "next-auth/react"
 import { createPost } from "@/lib/posts"
@@ -13,7 +13,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import Link from "next/link"
-import { ArrowLeft, Save, Eye, LogOut } from "lucide-react"
+import { ArrowLeft, Save, Eye, LogOut, ImagePlus, Upload as UploadIcon } from "lucide-react"
 
 export default function NewPostPage() {
   const router = useRouter()
@@ -34,6 +34,8 @@ export default function NewPostPage() {
   const [loading, setLoading] = useState(false)
   const [file, setFile] = useState<File | null>(null)
   const [preview, setPreview] = useState<string | null>(null)
+  const [uploading, setUploading] = useState(false)
+  const fileInputRef = useRef<HTMLInputElement | null>(null)
 
   useEffect(() => {
     // aguardando sessão
@@ -159,20 +161,7 @@ export default function NewPostPage() {
                 <p className="text-xs text-zinc-500">URL: /blog/{slug || "url-do-post"}</p>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="excerpt" className="text-white">
-                  Resumo *
-                </Label>
-                <Textarea
-                  id="excerpt"
-                  value={excerpt}
-                  onChange={(e) => setExcerpt(e.target.value)}
-                  placeholder="Breve descrição do post (aparece na listagem)"
-                  required
-                  rows={3}
-                  className="bg-zinc-800 border-zinc-700 text-white placeholder:text-zinc-500"
-                />
-              </div>
+
 
               <div className="space-y-2">
                 <Label htmlFor="content" className="text-white">
@@ -221,17 +210,65 @@ export default function NewPostPage() {
                     placeholder="https://exemplo.com/imagem.jpg"
                     className="bg-zinc-800 border-zinc-700 text-white placeholder:text-zinc-500"
                   />
-                  <div className="flex items-center gap-3">
+                  <div className="flex flex-wrap items-center gap-3">
                     <input
+                      ref={fileInputRef}
                       type="file"
                       accept="image/jpeg,image/png,image/webp"
+                      className="hidden"
                       onChange={(e) => {
                         const f = e.target.files?.[0] || null
                         setFile(f)
                         setPreview(f ? URL.createObjectURL(f) : null)
                       }}
-                      className="text-sm text-zinc-300"
                     />
+                    <Button
+                      type="button"
+                      variant="outline"
+                      className="border-zinc-700 text-white hover:bg-zinc-800"
+                      onClick={() => fileInputRef.current?.click()}
+                    >
+                      <ImagePlus className="w-4 h-4 mr-2" />
+                      Selecionar imagem
+                    </Button>
+                    <Button
+                      type="button"
+                      disabled={!file || uploading}
+                      className="bg-primary text-primary-foreground hover:bg-primary/90"
+                      onClick={async () => {
+                        if (!file) return
+                        try {
+                          setUploading(true)
+                          const form = new FormData()
+                          form.append("file", file)
+                          const res = await fetch("/api/upload", { method: "POST", body: form })
+                          if (!res.ok) {
+                            const { error } = await res.json().catch(() => ({ error: "Falha no upload" }))
+                            throw new Error(error || "Falha ao enviar imagem")
+                          }
+                          const data = (await res.json()) as { url: string }
+                          setImageUrl(data.url)
+                        } catch (err) {
+                          console.error(err)
+                          alert("Erro ao enviar imagem")
+                        } finally {
+                          setUploading(false)
+                        }
+                      }}
+                    >
+                      {uploading ? (
+                        <>
+                          <UploadIcon className="w-4 h-4 mr-2 animate-pulse" /> Enviando...
+                        </>
+                      ) : (
+                        <>
+                          <UploadIcon className="w-4 h-4 mr-2" /> Enviar imagem
+                        </>
+                      )}
+                    </Button>
+                    {imageUrl && (
+                      <span className="text-xs text-zinc-400 break-all">{imageUrl}</span>
+                    )}
                   </div>
                   {preview && (
                     <div className="mt-2">
