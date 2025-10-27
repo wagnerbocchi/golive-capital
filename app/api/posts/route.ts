@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 import { getServerSession } from "next-auth/next"
-import { authOptions } from "@/app/api/auth/[...nextauth]/route"
+import { authOptions } from "@/lib/authOptions"
 import { prisma } from "@/lib/prisma"
 
 
@@ -43,6 +43,17 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Campos obrigatórios ausentes." }, { status: 400 })
     }
 
+    // calcula readTime se não for fornecido (aprox. 200 palavras/min)
+    const computedReadTime = (() => {
+      if (typeof readTime === "string" && readTime.trim()) return readTime
+      if (typeof content === "string" && content.trim()) {
+        const words = content.trim().split(/\s+/).length
+        const minutes = Math.max(1, Math.round(words / 200))
+        return `${minutes} min`
+      }
+      return "1 min"
+    })()
+
     const newPost = await prisma.post.create({
       data: {
         title,
@@ -52,7 +63,7 @@ export async function POST(request: Request) {
         category,
         imageUrl,
         author,
-        readTime,
+        readTime: computedReadTime,
         status,
       },
     })

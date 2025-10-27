@@ -4,8 +4,8 @@ import type React from "react"
 
 import { useEffect, useState } from "react"
 import { useRouter, useParams } from "next/navigation"
-import { isAuthenticated, logout, getCurrentUser } from "@/lib/auth"
-import { getAllPosts, updatePost, type BlogPost } from "@/lib/posts"
+import { useSession, signOut } from "next-auth/react"
+import { getPostById, updatePost, type BlogPost } from "@/lib/posts"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -18,9 +18,15 @@ import { ArrowLeft, Save, Eye, LogOut } from "lucide-react"
 export default function EditPostPage() {
   const router = useRouter()
   const params = useParams()
-  const postId = params.id as string
+  const postId = Number(params.id as string)
 
-  const [user, setUser] = useState<any>(null)
+  const { status: authStatus, data: session } = useSession({
+    required: true,
+    onUnauthenticated() {
+      router.push("/login")
+    },
+  })
+  const user = session?.user
   const [post, setPost] = useState<BlogPost | null>(null)
   const [title, setTitle] = useState("")
   const [slug, setSlug] = useState("")
@@ -32,35 +38,34 @@ export default function EditPostPage() {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    if (!isAuthenticated()) {
-      router.push("/admin/login")
+    if (authStatus !== "authenticated") return
+    if (!postId || Number.isNaN(postId)) {
+      router.push("/admin/posts")
       return
     }
-    setUser(getCurrentUser())
-
-    // Load post data
-    const posts = getAllPosts()
-    const foundPost = posts.find((p) => p.id === postId)
-    if (foundPost) {
-      setPost(foundPost)
-      setTitle(foundPost.title)
-      setSlug(foundPost.slug)
-      setExcerpt(foundPost.excerpt)
-      setContent(foundPost.content)
-      setCategory(foundPost.category)
-      setImageUrl(foundPost.imageUrl)
-      setStatus(foundPost.status)
-    } else {
-      router.push("/admin/posts")
-    }
-  }, [router, postId])
+    ;(async () => {
+      const foundPost = await getPostById(postId)
+      if (foundPost) {
+        setPost(foundPost)
+        setTitle(foundPost.title)
+        setSlug(foundPost.slug)
+        setExcerpt(foundPost.excerpt || "")
+        setContent(foundPost.content)
+        setCategory(foundPost.category || "Investimentos")
+        setImageUrl(foundPost.imageUrl || "")
+        setStatus(foundPost.status)
+      } else {
+        router.push("/admin/posts")
+      }
+    })()
+  }, [authStatus, router, postId])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
 
     try {
-      updatePost(postId, {
+      await updatePost(postId, {
         title,
         slug,
         excerpt,
@@ -80,10 +85,10 @@ export default function EditPostPage() {
   }
 
   const handleLogout = () => {
-    logout()
-    router.push("/admin/login")
+    signOut({ callbackUrl: "/login" })
   }
 
+  if (authStatus === "loading") return null
   if (!user || !post) {
     return null
   }

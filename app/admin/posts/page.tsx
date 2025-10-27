@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import { isAuthenticated, logout } from "@/lib/auth"
+import { useSession, signOut } from "next-auth/react"
 import { getAllPosts, deletePost, updatePost, type BlogPost } from "@/lib/posts"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -13,26 +13,28 @@ import Image from "next/image"
 
 export default function AdminPostsPage() {
   const router = useRouter()
+  const { status } = useSession({
+    required: true,
+    onUnauthenticated() {
+      router.push("/login")
+    },
+  })
   const [posts, setPosts] = useState<BlogPost[]>([])
   const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([])
   const [searchTerm, setSearchTerm] = useState("")
   const [filterStatus, setFilterStatus] = useState<"all" | "published" | "draft">("all")
 
   useEffect(() => {
-    if (!isAuthenticated()) {
-      router.push("/admin/login")
-      return
-    }
-
+    if (status !== "authenticated") return
     loadPosts()
-  }, [router])
+  }, [status, router])
 
   useEffect(() => {
     filterPosts()
   }, [posts, searchTerm, filterStatus])
 
-  const loadPosts = () => {
-    const allPosts = getAllPosts()
+  const loadPosts = async () => {
+    const allPosts = await getAllPosts()
     setPosts(allPosts)
   }
 
@@ -54,22 +56,21 @@ export default function AdminPostsPage() {
     setFilteredPosts(filtered)
   }
 
-  const handleDelete = (id: string) => {
+  const handleDelete = async (id: number) => {
     if (confirm("Tem certeza que deseja excluir este post?")) {
-      deletePost(id)
-      loadPosts()
+      await deletePost(id)
+      await loadPosts()
     }
   }
 
-  const handleToggleStatus = (post: BlogPost) => {
+  const handleToggleStatus = async (post: BlogPost) => {
     const newStatus = post.status === "published" ? "draft" : "published"
-    updatePost(post.id, { status: newStatus })
-    loadPosts()
+    await updatePost(post.id, { status: newStatus })
+    await loadPosts()
   }
 
   const handleLogout = () => {
-    logout()
-    router.push("/admin/login")
+    signOut({ callbackUrl: "/login" })
   }
 
   return (

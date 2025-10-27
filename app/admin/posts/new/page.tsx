@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import { isAuthenticated, logout, getCurrentUser } from "@/lib/auth"
+import { useSession, signOut } from "next-auth/react"
 import { createPost } from "@/lib/posts"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -17,7 +17,13 @@ import { ArrowLeft, Save, Eye, LogOut } from "lucide-react"
 
 export default function NewPostPage() {
   const router = useRouter()
-  const [user, setUser] = useState<any>(null)
+  const { status: authStatus, data: session } = useSession({
+    required: true,
+    onUnauthenticated() {
+      router.push("/login")
+    },
+  })
+  const user = session?.user
   const [title, setTitle] = useState("")
   const [slug, setSlug] = useState("")
   const [excerpt, setExcerpt] = useState("")
@@ -26,14 +32,12 @@ export default function NewPostPage() {
   const [imageUrl, setImageUrl] = useState("")
   const [status, setStatus] = useState<"draft" | "published">("draft")
   const [loading, setLoading] = useState(false)
+  const [file, setFile] = useState<File | null>(null)
+  const [preview, setPreview] = useState<string | null>(null)
 
   useEffect(() => {
-    if (!isAuthenticated()) {
-      router.push("/admin/login")
-      return
-    }
-    setUser(getCurrentUser())
-  }, [router])
+    // aguardando sessão
+  }, [authStatus])
 
   useEffect(() => {
     // Auto-generate slug from title
@@ -51,13 +55,29 @@ export default function NewPostPage() {
     setLoading(true)
 
     try {
-      createPost({
+      let finalImageUrl = imageUrl
+
+      // Se um arquivo foi selecionado, faz upload primeiro
+      if (file) {
+        const form = new FormData()
+        form.append("file", file)
+
+        const res = await fetch("/api/upload", { method: "POST", body: form })
+        if (!res.ok) {
+          const { error } = await res.json().catch(() => ({ error: "Falha no upload" }))
+          throw new Error(error || "Falha ao enviar imagem")
+        }
+        const data = (await res.json()) as { url: string }
+        finalImageUrl = data.url
+      }
+
+      await createPost({
         title,
         slug,
         excerpt,
         content,
         category,
-        imageUrl: imageUrl || "/placeholder.svg?height=400&width=600",
+        imageUrl: finalImageUrl || "/placeholder.svg?height=400&width=600",
         author: user?.name || "Administrador",
         publishedAt: new Date().toISOString(),
         status,
@@ -73,13 +93,11 @@ export default function NewPostPage() {
   }
 
   const handleLogout = () => {
-    logout()
-    router.push("/admin/login")
+    signOut({ callbackUrl: "/login" })
   }
 
-  if (!user) {
-    return null
-  }
+  if (authStatus === "loading") return null
+  if (!user) return null
 
   return (
     <div className="min-h-screen bg-black">
@@ -194,7 +212,7 @@ export default function NewPostPage() {
 
                 <div className="space-y-2">
                   <Label htmlFor="imageUrl" className="text-white">
-                    URL da Imagem
+                    URL da Imagem ou Upload
                   </Label>
                   <Input
                     id="imageUrl"
@@ -203,6 +221,29 @@ export default function NewPostPage() {
                     placeholder="https://exemplo.com/imagem.jpg"
                     className="bg-zinc-800 border-zinc-700 text-white placeholder:text-zinc-500"
                   />
+                  <div className="flex items-center gap-3">
+                    <input
+                      type="file"
+                      accept="image/jpeg,image/png,image/webp"
+                      onChange={(e) => {
+                        const f = e.target.files?.[0] || null
+                        setFile(f)
+                        setPreview(f ? URL.createObjectURL(f) : null)
+                      }}
+                      className="text-sm text-zinc-300"
+                    />
+                  </div>
+                  {preview && (
+                    <div className="mt-2">
+                      <Label className="text-zinc-400 text-sm">Pré-visualização</Label>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={preview}
+                        alt="Pré-visualização"
+                        className="mt-1 h-32 w-auto rounded border border-zinc-700 object-cover"
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
             </CardContent>

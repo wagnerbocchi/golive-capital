@@ -1,9 +1,9 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { useRouter } from "next/navigation"
-import { isAuthenticated, logout, getCurrentUser } from "@/lib/auth"
-import { getAllPosts, getPublishedPosts } from "@/lib/posts"
+import { useSession, signOut } from "next-auth/react"
+import { getAllPosts } from "@/lib/posts"
 import { getAnalyticsSummary } from "@/lib/analytics"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -12,33 +12,35 @@ import { BarChart, FileText, Eye, TrendingUp, LogOut, PlusCircle } from "lucide-
 
 export default function AdminDashboard() {
   const router = useRouter()
-  const [user, setUser] = useState<any>(null)
+  const { status, data: session } = useSession({
+    required: true,
+    onUnauthenticated() {
+      router.push("/login")
+    },
+  })
+  const user = session?.user
   const [analytics, setAnalytics] = useState<any>(null)
   const [posts, setPosts] = useState<any[]>([])
 
   useEffect(() => {
-    if (!isAuthenticated()) {
-      router.push("/admin/login")
-      return
-    }
-
-    setUser(getCurrentUser())
+    if (status !== "authenticated") return
     setAnalytics(getAnalyticsSummary())
-    setPosts(getAllPosts())
-  }, [router])
+    ;(async () => {
+      const all = await getAllPosts()
+      setPosts(all)
+    })()
+  }, [status, router])
 
   const handleLogout = () => {
-    logout()
-    router.push("/admin/login")
+    signOut({ callbackUrl: "/login" })
   }
 
-  if (!user) {
-    return null
-  }
+  if (status === "loading") return null
+  if (!user) return null
 
-  const publishedPosts = getPublishedPosts()
-  const draftPosts = posts.filter((p) => p.status === "draft")
-  const totalViews = posts.reduce((sum, post) => sum + post.views, 0)
+  const publishedCount = useMemo(() => posts.filter((p) => p.status === "published").length, [posts])
+  const draftPosts = useMemo(() => posts.filter((p) => p.status === "draft"), [posts])
+  const totalViews = useMemo(() => posts.reduce((sum, post) => sum + (post.views || 0), 0), [posts])
 
   return (
     <div className="min-h-screen bg-black">
@@ -106,7 +108,7 @@ export default function AdminDashboard() {
               <FileText className="w-4 h-4 text-yellow-500" />
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold text-white">{publishedPosts.length}</div>
+              <div className="text-3xl font-bold text-white">{publishedCount}</div>
               <p className="text-xs text-zinc-500 mt-1">{draftPosts.length} rascunhos</p>
             </CardContent>
           </Card>

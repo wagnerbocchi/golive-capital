@@ -30,6 +30,7 @@ export default function HomePage() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
 const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,7 +47,8 @@ const handleSubmit = async (e: React.FormEvent) => {
 
       if (!response.ok) {
         // Se a resposta não for bem-sucedida, lança um erro
-        throw new Error('Falha ao enviar a mensagem.');
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Falha ao enviar a mensagem.');
       }
 
       // Se a resposta for bem-sucedida
@@ -63,11 +65,12 @@ const handleSubmit = async (e: React.FormEvent) => {
           mensagem: "",
         });
       }, 3000);
+      setError(null); // Limpa erros anteriores
 
     } catch (error) {
       console.error(error);
-      // Aqui você pode adicionar um estado para exibir uma mensagem de erro ao usuário
-      alert("Ocorreu um erro. Tente novamente mais tarde.");
+      const errorMessage = error instanceof Error ? error.message : "Ocorreu um erro. Tente novamente mais tarde.";
+      setError(errorMessage);
     } finally {
       // Garante que o estado de submissão seja falso ao final, independentemente do resultado
       setIsSubmitting(false);
@@ -110,11 +113,11 @@ const handleSubmit = async (e: React.FormEvent) => {
               <Link href="/glossario" className="text-muted-foreground hover:text-foreground transition-colors">
                 Glossário
               </Link>
-              <Link href="/blog" className="text-foreground font-medium">
+              <Link href="/blog" className="text-muted-foreground hover:text-foreground transition-colors">
                 Blog
               </Link>
               <Link
-                href="/#contato"
+                href="/contato"
                 className="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md transition-colors"
               >
                 Contato
@@ -260,6 +263,11 @@ const handleSubmit = async (e: React.FormEvent) => {
                         </>
                       )}
                     </Button>
+                    {error && (
+                      <p className="text-sm text-destructive mt-2">
+                        Erro: {error}
+                      </p>
+                    )}
                   </form>
 
                   <p className="text-xs text-muted-foreground">

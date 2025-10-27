@@ -1,10 +1,9 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { login } from "@/lib/auth"
+import { signIn } from "next-auth/react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -23,12 +22,16 @@ export default function AdminLoginPage() {
     setError("")
     setLoading(true)
 
-    const user = login(email, password)
+    const result = await signIn("credentials", {
+      redirect: false,
+      email,
+      password,
+    })
 
-    if (user) {
+    if (result?.ok) {
       router.push("/admin/dashboard")
     } else {
-      setError("Email ou senha incorretos")
+      setError(result?.error || "Email ou senha incorretos")
     }
 
     setLoading(false)
@@ -89,15 +92,6 @@ export default function AdminLoginPage() {
               {loading ? "Entrando..." : "Entrar"}
             </Button>
           </form>
-          <div className="mt-4 p-3 bg-zinc-800 rounded-lg">
-            <p className="text-xs text-zinc-400 text-center">
-              <strong className="text-yellow-500">Credenciais de teste:</strong>
-              <br />
-              Email: admin@golivecapital.com
-              <br />
-              Senha: admin123
-            </p>
-          </div>
         </CardContent>
       </Card>
     </div>

@@ -1,37 +1,21 @@
-"use client"
-
-import { useEffect, useState } from "react"
 import { notFound } from "next/navigation"
-import { getPostBySlug, type Post } from "@/lib/posts"
+import { prisma } from "@/lib/prisma"
 import { Badge } from "@/components/ui/badge"
-import { Calendar, Clock, User, ArrowLeft } from "lucide-react"
+import { Calendar, User, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
-export default function PostPage({ params }: { params: { slug: string } }) {
-  const [post, setPost] = useState<Post | null | undefined>(undefined)
+export default async function PostPage({ params }: { params: { slug: string } }) {
+  const post = await prisma.post.findUnique({
+    where: { slug: params.slug },
+  })
 
-  useEffect(() => {
-    const foundPost = getPostBySlug(params.slug)
-    setPost(foundPost)
-  }, [params.slug])
-
-  if (post === undefined) {
-    // Carregando...
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-white">Carregando...</div>
-      </div>
-    )
-  }
-
-  if (!post) {
+  if (!post || post.status !== "published") {
     notFound()
   }
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
       <header className="border-b border-border bg-card">
         <div className="container mx-auto px-4 py-4">
           <nav className="flex items-center justify-between">
@@ -89,13 +73,16 @@ export default function PostPage({ params }: { params: { slug: string } }) {
               </div>
               <div className="flex items-center">
                 <Calendar className="h-4 w-4 mr-2" />
-                <time dateTime={post.publishedAt}>
+                <time dateTime={post.publishedAt.toISOString()}>
                   {new Date(post.publishedAt).toLocaleDateString("pt-BR", { dateStyle: "long" })}
                 </time>
               </div>
             </div>
           </header>
-          <div className="prose prose-invert prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, "<br />") }} />
+          <div
+            className="prose prose-invert prose-lg max-w-none"
+            dangerouslySetInnerHTML={{ __html: (post.content || "").replace(/\n/g, "<br />") }}
+          />
         </article>
       </main>
     </div>

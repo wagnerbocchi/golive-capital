@@ -6,13 +6,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { ArrowRight, Calendar, Clock, Search, BookOpen, User, Loader2 } from "lucide-react"
-import type { Post } from "@prisma/client"
+import { getPublishedPosts, type BlogPost } from "@/lib/posts"
 import Link from "next/link"
 import Image from "next/image"
 
 export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState("")
-  const [posts, setPosts] = useState<Post[]>([])
+  const [posts, setPosts] = useState<BlogPost[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [newsletterEmail, setNewsletterEmail] = useState("")
   const [newsletterStatus, setNewsletterStatus] = useState<"idle" | "submitting" | "success" | "error">("idle")
@@ -20,9 +20,13 @@ export default function BlogPage() {
   useEffect(() => {
     const fetchPosts = async () => {
       setIsLoading(true)
-      const response = await fetch("/api/posts")
-      const data = await response.json()
-      setPosts(data)
+      try {
+        const data = await getPublishedPosts()
+        setPosts(data)
+      } catch (error) {
+        console.error("Erro ao buscar posts:", error)
+        setPosts([])
+      }
       setIsLoading(false)
     }
     fetchPosts()
@@ -36,7 +40,7 @@ export default function BlogPage() {
     const matchesSearch =
       searchQuery === "" ||
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
+      (post.excerpt || "").toLowerCase().includes(searchQuery.toLowerCase())
     return matchesCategory && matchesSearch
   })
 

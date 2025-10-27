@@ -141,11 +141,11 @@ export default function GlossarioPage() {
               <Link href="/glossario" className="text-muted-foreground hover:text-foreground transition-colors">
                 Glossário
               </Link>
-              <Link href="/blog" className="text-foreground font-medium">
+              <Link href="/blog" className="text-muted-foreground hover:text-foreground transition-colors">
                 Blog
               </Link>
               <Link
-                href="/#contato"
+                href="/contato"
                 className="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md transition-colors"
               >
                 Contato
