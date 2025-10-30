@@ -457,6 +457,81 @@ const handleSubmit = async (e: React.FormEvent) => {
             </Card>
           </div>
 
+        {/* Advisors Section */}
+        <section id="conselheiros" className="py-16 px-4 ">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Conselheiros</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Profissionais de destaque com vasta experiência em consultoria estratégica e investimentos
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto ">
+            {/* Eduardo Andrade */}
+            <Card className="bg-background border-border bg-card">
+              <CardHeader className="text-center">
+                <div className="w-24 h-24 bg-muted rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
+                  <Users className="h-12 w-12 text-primary" />
+                </div>
+                <CardTitle className="text-xl">Eduardo Andrade</CardTitle>
+                <CardDescription className="text-primary font-medium">
+                  Sócio fundador da gestora Otinga Investimentos
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Longa experiência em Consultoria Estratégia, tendo atuado como sócio da McKinsey & Co e executivo
+                  sênior em grandes conglomerados nacionais como Usiminas.
+                </p>
+                <div className="space-y-2">
+                  <div className="flex items-start space-x-2">
+                    <Briefcase className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-muted-foreground">
+                      Membro do conselho de administração da Nexa (NYSE) e Companhia Brasileira de Alumínio (B3)
+                    </span>
+                  </div>
+                  <div className="flex items-start space-x-2">
+                    <Award className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-muted-foreground">MBA pela Universidade de Chicago</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Jorge Fergie */}
+            <Card className="bg-background border-border bg-card">
+              <CardHeader className="text-center ">
+                <div className="w-24 h-24 bg-muted rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden ">
+                  <Users className="h-12 w-12 text-primary" />
+                </div>
+                <CardTitle className="text-xl">Jorge Fergie</CardTitle>
+                <CardDescription className="text-primary font-medium">Sócio fundador da Nimax Capital</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Trabalhou por 29 anos na consultoria McKinsey & Co onde atuou como sócio-diretor no Brasil, EUA e
+                  América Latina.
+                </p>
+                <div className="space-y-2">
+                  <div className="flex items-start space-x-2">
+                    <Briefcase className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-muted-foreground">
+                      Managing Director e Head das operações da KKR Investimentos Alternativos no Brasil e América
+                      Latina
+                    </span>
+                  </div>
+                  <div className="flex items-start space-x-2">
+                    <Award className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-muted-foreground">Engenheiro pela Universidade de Stanford</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
           {/* Section investidor */}
           <div className="mt-12 max-w-4xl mx-auto">
             <div className="text-center mb-8">
